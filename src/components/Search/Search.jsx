@@ -10,12 +10,10 @@ function Search() {
   const [res, setRes] = useState([]);
   const [id, setId] = useState("");
   const debouncedSearchText = useDebounce(searchInput, 600);
-
-  const [movie, setmovie] = useState("");
-
+  id.toLowerCase()
   const fetchdata = async () => {
     if (debouncedSearchText !== "") {
-      let url = `https://api.themoviedb.org/3/search/tv?api_key=5a6077716d3404c52264bcf17f97a3d3&language=en-US&query=${debouncedSearchText}&page=1`;
+      let url = `https://api.themoviedb.org/3/search/tv?api_key=5a6077716d3404c52264bcf17f97a3d3&language=en-US&query=${debouncedSearchText}&page=${1}`;
       await fetch(url)
         .then((data) => data.json())
         .then((response) => {
@@ -32,6 +30,9 @@ function Search() {
     fetchdata();
     console.log("Res", res);
   }, [debouncedSearchText]);
+
+
+
 
   return (
     <>
@@ -54,7 +55,7 @@ function Search() {
             onChange={(e) => setSearchInput(e.target.value)}
             id=""
           />
-        
+
         </div>
 
         <div className="container">
@@ -84,6 +85,7 @@ function Search() {
               ))}
           </div>
         </div>
+
       </div>
     </>
   );
