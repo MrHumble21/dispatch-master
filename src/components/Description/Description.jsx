@@ -24,10 +24,10 @@ function Description() {
   const [trailersId, setTrailers] = useState();
   const [movie, setmovie] = useState();
   const [recommended, setRecommended] = useState([]);
-  let url = `https://api.themoviedb.org/3/movie/${data.id}/videos?api_key=68ad6ca2623e9150d8fc6fa4921a6bf0&language=en-US`;
+  let url = `https://api.themoviedb.org/3/movie/${data.id}/videos?api_key=5a6077716d3404c52264bcf17f97a3d3&language=en-US`;
   const genres = async () => {
     await fetch(
-      `https://api.themoviedb.org/3/movie/${data.id}?api_key=68ad6ca2623e9150d8fc6fa4921a6bf0&language=en-US`
+      `https://api.themoviedb.org/3/movie/${data.id}?api_key=5a6077716d3404c52264bcf17f97a3d3&language=en-US`
     )
       .then((response) => response.json())
       .then((result) => setmovie(result));
@@ -40,7 +40,7 @@ function Description() {
       });
 
     fetch(
-      `https://api.themoviedb.org/3/movie/${data.id}/recommendations?api_key=68ad6ca2623e9150d8fc6fa4921a6bf0&language=en-US&page=1`
+      `https://api.themoviedb.org/3/movie/${data.id}/recommendations?api_key=5a6077716d3404c52264bcf17f97a3d3&language=en-US&page=1`
     )
       .then((response) => response.json())
       .then((rec) => setRecommended(rec.results));
@@ -70,29 +70,24 @@ function Description() {
           <div className="col-12 col-md-6 py-md-5">
             <div className="container">
               <div className="row">
-                <div className="col-sm-6 p-2">
-                  <div className="h-100  cshadow p-3 rounded d-flex justify-content-center align-items-center">
-                    <h2 className="fs-6  text-center text-white">
-                      {data.original_title || data.name}
-                    </h2>
-                  </div>
+                <div className="col-sm-12">
+                  <h2 className="fs-1 text-black">
+                    {data.original_title || data.name}
+                  </h2>
+                  <p className="m-0 fs-5 text-black  ">
+                  <HistoryToggleOffIcon style={{ color: "red",marginRight:"8px" }} />
+                    
+                    {data.first_air_date ||
+                      data.release_date ||
+                      "Release Date is not available"}
+                  </p>
                 </div>
-                <div className="col-sm-6 p-2">
-                  <div className="px-4 d-flex align-items-center cshadow p-1 rounded ">
-                    <HistoryToggleOffIcon style={{ color: "white" }} />
-                    <p className="text-center mx-2 m-0 text-white  ">
-                      Release Date:{" "}
-                      {data.first_air_date ||
-                        data.release_date ||
-                        "Release Date is not available"}
-                    </p>
-                  </div>
-                </div>
+               
               </div>
               <p className="m-0">Rating: {data.vote_average / 2}</p>
               <Rating name="read-only" value={data.vote_average / 2} readOnly />
               <p>{data.overview}</p>
-              <p className="fs-5 m-3">Genres:</p>
+              <p className="fs-5">Genres:</p>
               {movie &&
                 movie.genres.map((e, i) => (
                   <span
@@ -107,9 +102,8 @@ function Description() {
                 target="blank"
                 href={
                   !trailersId
-                    ? `https://www.youtube.com/results?search_query=${
-                        data.original_title || data.name
-                      }`
+                    ? `https://www.youtube.com/results?search_query=${data.original_title || data.name
+                    }`
                     : `https://www.youtube.com/watch?v=${trailersId}`
                 }
               >

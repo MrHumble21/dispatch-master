@@ -15,7 +15,7 @@ function Search() {
 
   const fetchdata = async () => {
     if (debouncedSearchText !== "") {
-      let url = `https://api.themoviedb.org/3/search/tv?api_key=68ad6ca2623e9150d8fc6fa4921a6bf0&language=en-US&query=${debouncedSearchText}&page=1`;
+      let url = `https://api.themoviedb.org/3/search/tv?api_key=5a6077716d3404c52264bcf17f97a3d3&language=en-US&query=${debouncedSearchText}&page=1`;
       await fetch(url)
         .then((data) => data.json())
         .then((response) => {
@@ -91,4 +91,4 @@ function Search() {
 
 export default Search;
 
-// `https://api.themoviedb.org/3/search/tv?api_key=68ad6ca2623e9150d8fc6fa4921a6bf0&language=en-US&query=spiderman&page=1`;
+// `https://api.themoviedb.org/3/search/tv?api_key=5a6077716d3404c52264bcf17f97a3d3&language=en-US&query=spiderman&page=1`;

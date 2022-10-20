@@ -16,7 +16,7 @@ import { img_500 } from "./components/configs/config";
 import { Link } from "react-router-dom";
 import { genres } from "./genres";
 import TopRated from "./components/TopRated/TopRated";
-const apiKey = "68ad6ca2623e9150d8fc6fa4921a6bf0";
+const apiKey = "5a6077716d3404c52264bcf17f97a3d3";
 function Popular() {
   const [content, setContent] = useState([]);
   const loaded = [...content];
@@ -96,9 +96,8 @@ function Popular() {
           </div>
           <center className="">
             <button
-              className={`btn btn-transparent mx-2 ${
-                page === 1 ? "disabled" : ""
-              } `}
+              className={`btn btn-transparent mx-2 ${page === 1 ? "disabled" : ""
+                } `}
               onClick={() => {
                 setPage(page - 1);
                 window.scrollTo({

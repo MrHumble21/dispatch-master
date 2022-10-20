@@ -9,7 +9,7 @@ import "@splidejs/react-splide/css/sea-green";
 import "@splidejs/react-splide/css/core";
 import { isMobile } from "react-device-detect";
 import { Rating } from "@mui/material";
-let api = `https://api.themoviedb.org/3/movie/top_rated?api_key=68ad6ca2623e9150d8fc6fa4921a6bf0&language=en-US&page=1`;
+let api = `https://api.themoviedb.org/3/movie/top_rated?api_key=5a6077716d3404c52264bcf17f97a3d3&language=en-US&page=1`;
 
 const TopRated = () => {
   const [top_rated, set_top_rated] = useState([]);
@@ -21,13 +21,12 @@ const TopRated = () => {
   useEffect(() => {
     fetchData();
   }, []);
-  console.log(top_rated);
   return (
     <div className="mx-2">
       <Splide
         options={{
           type   : 'loop',
-          padding: '0.5rem',
+          padding: '-5rem',
         }}
         aria-label="My Favorite Images"
       >

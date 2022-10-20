@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import "animate.css/animate.min.css";
 import { AnimationOnScroll } from "react-animation-on-scroll";
 import TopRated from "../TopRated/TopRated";
-const apiKey = "68ad6ca2623e9150d8fc6fa4921a6bf0";
+const apiKey = "5a6077716d3404c52264bcf17f97a3d3";
 function Trending() {
   const [content, setContent] = useState([]);
   const [tv, movie] = useState("all");
