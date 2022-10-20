@@ -92,3 +92,5 @@ function Search() {
 export default Search;
 
 // `https://api.themoviedb.org/3/search/tv?api_key=68ad6ca2623e9150d8fc6fa4921a6bf0&language=en-US&query=spiderman&page=1`;
+
+
