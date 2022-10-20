@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap');
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+
+
+}
+
+.custom_card {
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+  border-top: 3px solid #fb2576;
+  border-bottom: 3px solid #fb2576;
+  border-radius: 10px;
+}
+
+.card_image {
+  box-shadow: rgba(240, 46, 101, 0.4) 0px 5px;
+}
+
+.cshadow {
+  background: #ee0979; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #ee0979,
+    #ff6a00
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #ee0979,
+    #ff6a00
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.min-height-card {
+  height: 320px !important;
+}
+@media (max-width: 450px) {
+  .m-height-card {
+    min-height: 380px;
+  }
+}
+body {
+}
+* {
+  scroll-behavior: smooth !important;
+}
+/* CSS */
+.custom-btn {
+  align-items: center;
+  background-color: #fee6e3;
+  border: 2px solid #111;
+  border-radius: 8px;
+  box-sizing: border-box;
+  color: #111;
+  cursor: pointer;
+  display: flex;
+  font-family: Inter, sans-serif;
+  font-size: 16px;
+  height: 48px;
+  justify-content: center;
+  line-height: 24px;
+  max-width: 100%;
+  padding: 0 25px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.custom-btn:after {
+  background-color: #111;
+  border-radius: 8px;
+  content: "";
+  display: block;
+  height: 48px;
+  left: 0;
+  width: 100%;
+  position: absolute;
+  top: -2px;
+  transform: translate(8px, 8px);
+  transition: transform 0.2s ease-out;
+  z-index: -1;
+}
+
+.custom-btn:hover:after {
+  transform: translate(0, 0);
+}
+
+.custom-btn:active {
+  background-color: #ffdeda;
+  outline: 0;
+}
+
+.custom-btn:hover {
+  outline: 0;
+}
+
+@media (min-width: 768px) {
+  .custom-btn {
+    padding: 0 40px;
+  }
+}
+
+.rel {
+  position: relative;
+}
+.toTop {
+  position: fixed;
+  bottom: 40px;
+  right: 20px;
+}
+
+.arrowtop {
+  font-size: 50px;
+}
+
+.glass {
+  /* From https://css.glass */
+  background: rgba(255, 255, 255, 0.47);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10.1px);
+  -webkit-backdrop-filter: blur(10.1px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.gradient {
+  background: rgb(255, 255, 255);
+  background: linear-gradient(
+    32deg,
+    rgba(255, 255, 255, 0.107) 0%,
+    rgb(0, 0, 0) 100%
+  );
+  border-radius: 15px;
+}

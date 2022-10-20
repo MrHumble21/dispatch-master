@@ -1,0 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans&display=swap");
+
+.min-height {
+  min-height: 480px;
+}
+
+.ccard {
+  background-color: #005555 !important;
+  border: 1px solid #0078aa;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+.pop {
+  font-family: "DM Sans", sans-serif;
+}
+
