@@ -2,8 +2,9 @@
 import { Rating } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import Appbar from "../appbar/Appbar";
-import { isMobile } from "react-device-detect";
-// import s from "./css.module.css";
+import Lottie from "lottie-react";
+import { isMobile } from 'react-device-detect'
+import loadingAnimation from '../trending/Loader.json'
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import moment from "moment/moment";
@@ -25,6 +26,11 @@ function Description() {
   const [trailersId, setTrailers] = useState();
   const [movie, setmovie] = useState();
   const [recommended, setRecommended] = useState([]);
+  const [done, setDone] = useState(true);
+
+  setTimeout(() => {
+    setDone(false);
+  },3500)
   let url = `https://api.themoviedb.org/3/movie/${data.id}/videos?api_key=5a6077716d3404c52264bcf17f97a3d3&language=en-US`;
   const genres = async () => {
     await fetch(
@@ -57,6 +63,10 @@ function Description() {
   return (
     <>
       <div className="container  p-3">
+      {
+        done && <div className="full-container">
+          <Lottie className={isMobile ? 'w-75' : "w-25"} animationData={loadingAnimation} />
+        </div>}
         <div className="row py-5">
           <div className="col-md-6 col-12  p-4 d-flex justify-content-center">
             <img
