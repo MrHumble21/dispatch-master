@@ -1,7 +1,6 @@
 /* eslint-disable jsx-a11y/iframe-has-title */
 import { Rating } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import Appbar from "../appbar/Appbar";
 import Lottie from "lottie-react";
 import { isMobile } from 'react-device-detect'
 import loadingAnimation from '../trending/Loader.json'
