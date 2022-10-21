@@ -2,12 +2,17 @@ import { useEffect, useState } from "react";
 import MovieCard from "../card/MovieCard";
 import { img_500 } from "../configs/config";
 import { Link } from "react-router-dom";
+import React from 'react'
+import Lottie from "lottie-react";
+import { isMobile } from 'react-device-detect'
+import loadingAnimation from './Loader.json'
 import "animate.css/animate.min.css";
 import { AnimationOnScroll } from "react-animation-on-scroll";
 import TopRated from "../TopRated/TopRated";
 const apiKey = "5a6077716d3404c52264bcf17f97a3d3";
 function Trending() {
   const [content, setContent] = useState([]);
+  const [done, setDone] = useState(true);
   const [tv, movie] = useState("all");
   const handleMovie = () => {
     movie("movie");
@@ -16,6 +21,9 @@ function Trending() {
     movie("tv");
   };
 
+  setTimeout(() => {
+    setDone(false);
+  },4000)
   const url = `https://api.themoviedb.org/3/trending/${tv}/week?api_key=${apiKey}
   `;
   const fetchPopularMovies = async () => {
@@ -34,7 +42,11 @@ function Trending() {
     <>
       <br />
       <br />
-
+      {
+        done && <div className="full-container">
+          <Lottie className={isMobile ? 'w-75' : "w-25"} animationData={loadingAnimation} />
+        </div>}
+     
       {content.length && (
         <div className="container-fluid   mt-5 py-3">
           <center>

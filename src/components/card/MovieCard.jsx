@@ -5,7 +5,9 @@ import Rating from "@mui/material/Rating";
 import "react-loading-skeleton/dist/skeleton.css";
 import FlagIcon from "@mui/icons-material/Flag";
 import { genres } from "../../genres";
-import moment, { Moment } from "moment/moment";
+
+
+import moment from "moment/moment";
 
 // console.log(moment("4-15-2000").format("Do MMM  YYYY"));
 const MovieCard = ({
@@ -37,12 +39,12 @@ const MovieCard = ({
   return (
     <div className={`custom_card glass m-0 m-height-card ${margin}`}>
       <div className="container   py-2 m-0 ">
-        <img
+        {<img
           className="w-100 rounded card_image"
           component="img"
           src={movieImage}
           alt={alt}
-        />
+        /> }
       </div>
       <CardContent className="px-2 py-1">
         <Typography

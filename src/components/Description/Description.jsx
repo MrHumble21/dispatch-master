@@ -4,7 +4,9 @@ import React, { useEffect, useState } from "react";
 import Appbar from "../appbar/Appbar";
 import { isMobile } from "react-device-detect";
 // import s from "./css.module.css";
-
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
+import moment from "moment/moment";
 import { Link } from "react-router-dom";
 import HistoryToggleOffIcon from "@mui/icons-material/HistoryToggleOff";
 import { AiFillYoutube } from "react-icons/ai";
@@ -16,7 +18,6 @@ import "@splidejs/react-splide/css/core";
 import MovieCard from "../card/MovieCard";
 import { img_500 } from "../configs/config";
 import notFound from "./404.png";
-import TopRated from "../TopRated/TopRated";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 function Description() {
   const location = useLocation();
@@ -76,9 +77,9 @@ function Description() {
                   </h2>
                   <p className="m-0 fs-5 text-black  ">
                   <HistoryToggleOffIcon style={{ color: "red",marginRight:"8px" }} />
-                    
-                    {data.first_air_date ||
-                      data.release_date ||
+                  
+                    { moment(data.first_air_date).format("MMMM Do   YYYY") ||
+                       moment(data.release_date).format("MMMM Do   YYYY") ||
                       "Release Date is not available"}
                   </p>
                 </div>
@@ -86,7 +87,7 @@ function Description() {
               </div>
               <p className="m-0">Rating: {data.vote_average / 2}</p>
               <Rating name="read-only" value={data.vote_average / 2} readOnly />
-              <p>{data.overview}</p>
+              <p>{data.overview || <Skeleton count={5} />  }</p>
               <p className="fs-5">Genres:</p>
               {movie &&
                 movie.genres.map((e, i) => (

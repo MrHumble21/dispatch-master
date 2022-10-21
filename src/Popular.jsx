@@ -1,6 +1,9 @@
 import { useEffect, useState, useRef } from "react";
 import "./App.css";
-import { isMobile } from "react-device-detect";
+// import { isMobile } from "react-device-detect";
+import Lottie from "lottie-react";
+import { isMobile } from 'react-device-detect'
+import loadingAnimation from './components/trending/Loader.json'
 import {
   BsFillArrowUpCircleFill,
   BsFillArrowRightSquareFill,
@@ -22,7 +25,12 @@ function Popular() {
   const loaded = [...content];
   const [tv, movie] = useState("all");
   const [page, setPage] = useState(1);
+  const [done, setDone] = useState(true);
+
   movie.toString();
+  setTimeout(() => {
+    setDone(false);
+  },5500)
   const url = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=${page}`;
   const fetchPopularMovies = async () => {
     await fetch(url)
@@ -51,7 +59,10 @@ function Popular() {
   return (
     <div className="rel">
       <br />
-
+      {
+        done && <div className="full-container">
+          <Lottie className={isMobile ? 'w-75' : "w-25"} animationData={loadingAnimation} />
+        </div>}
       <TopRated />
       {loaded.length && (
         <div className="container-fluid   py-3">

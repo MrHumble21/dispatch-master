@@ -25,7 +25,7 @@ const TopRated = () => {
     <div className="mx-2">
       <Splide
         options={{
-          type   : 'loop',
+          type: 'loop',
           padding: '-5rem',
         }}
         aria-label="My Favorite Images"
@@ -44,7 +44,7 @@ const TopRated = () => {
                     boxShadow:
                       "box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px",
                   }}
-                  className="container animated_animate animate__fadeInDown p-0 rounded-4"
+                  className=" p-0 rounded-4"
                 >
                   <div
                     style={{

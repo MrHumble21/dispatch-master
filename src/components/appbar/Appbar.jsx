@@ -1,9 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-
 import logo from "./logo.svg";
-
 import { TfiHandPointDown } from "react-icons/tfi";
 import PanToolAltIcon from "@mui/icons-material/PanToolAlt";
 function Appbar() {
@@ -35,9 +33,9 @@ function Appbar() {
             <li className="nav-item">
               <Link
                 to={"/"}
-                className="animate__fadeInTopRight nav-link animate__animated animate__slow active"
+                className="animate__fadeInTopRight nav-link animate__animated animate__slow"
               >
-                Popular Movies ✨
+                Popular Movies
                 <span className="visually-hidden">(current)</span>
               </Link>
             </li>
@@ -46,7 +44,7 @@ function Appbar() {
                 to={"/trending"}
                 className="animate__fadeInTopRight animate__animated animate__slow nav-link"
               >
-                Trending Movies 🔥
+                Trending Movies
               </Link>
             </li>
             <li className="nav-item">
@@ -54,14 +52,10 @@ function Appbar() {
                 to={"/search"}
                 className="animate__fadeInTopRight animate__animated animate__slow nav-link"
               >
-                Search a movie 🔍
+                Search a movie
               </Link>
             </li>
-            {/* <li className="nav-item">
-              <Link to={"/"} className="nav-link">
-                Advanced Sorting 🔖
-              </Link>
-            </li> */}
+           
           </ul>
         </div>
       </div>
