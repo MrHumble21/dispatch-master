@@ -29,7 +29,7 @@ function Description() {
 
   setTimeout(() => {
     setDone(false);
-  },3500)
+  },1800)
   let url = `https://api.themoviedb.org/3/movie/${data.id}/videos?api_key=5a6077716d3404c52264bcf17f97a3d3&language=en-US`;
   const genres = async () => {
     await fetch(
@@ -59,6 +59,9 @@ function Description() {
       behavior: "smooth",
     });
   });
+
+  document.body.style.overflow = done ? 'hidden' : 'scroll'
+
   return (
     <>
       <div className="container  p-3">

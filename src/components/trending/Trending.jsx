@@ -37,6 +37,7 @@ function Trending() {
   useEffect(() => {
     fetchPopularMovies();
   }, [tv]);
+  document.body.style.overflow = done ? 'hidden' : 'scroll'
 
   return (
     <>

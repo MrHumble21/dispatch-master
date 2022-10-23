@@ -30,7 +30,7 @@ function Popular() {
   movie.toString();
   setTimeout(() => {
     setDone(false);
-  },5500)
+  }, 5500)
   const url = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=${page}`;
   const fetchPopularMovies = async () => {
     await fetch(url)
@@ -55,9 +55,14 @@ function Popular() {
     });
   };
   const topbtn = useRef();
+  document.body.style.overflow = done ? 'hidden' : 'scroll'
   /////////////////  UI will start from here below 👇  //////////////////////
   return (
-    <div className="rel">
+    <div
+      style={{
+        overflowY: done ? 'hidden' : 'scroll'
+      }}
+      className="rel">
       <br />
       {
         done && <div className="full-container">
