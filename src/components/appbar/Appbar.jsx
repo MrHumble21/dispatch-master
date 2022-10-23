@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "./logo.svg";
 import { TfiHandPointDown } from "react-icons/tfi";
+import {TbEqual} from 'react-icons/tb'
+import {FaTimes} from 'react-icons/fa'
 import PanToolAltIcon from "@mui/icons-material/PanToolAlt";
 function Appbar() {
   const [down, up] = useState(false);
@@ -26,7 +28,7 @@ function Appbar() {
           onClick={() => up(!down)}
           aria-label="Toggle navigation"
         >
-          {down ? <PanToolAltIcon className={'fs-1 d-md-none d-sm-block'} /> : <TfiHandPointDown className={'fs-1 d-md-none d-sm-block'} />}
+          {down ? <FaTimes className={'fs-1 d-md-none d-sm-block'} /> : <TbEqual className={'fs-1 d-md-none d-sm-block'} />}
         </button>
         <div className="collapse navbar-collapse" id="navbarColor02">
           <ul className="navbar-nav me-auto">
