@@ -11,7 +11,6 @@ function Test() {
     } else {
       require("./file2.css");
     }
-    console.log("red");
   };
   return (
     <div className="container p-5">

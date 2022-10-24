@@ -11,17 +11,14 @@ import {
 import "animate.css/animate.min.css";
 import { AnimationOnScroll } from "react-animation-on-scroll";
 // carousel
-import { Splide, SplideSlide } from "@splidejs/react-splide";
 import MovieCard from "./components/card/MovieCard";
 import { img_500 } from "./components/configs/config";
 import { Link } from "react-router-dom";
 import { genres } from "./genres";
-import TopRated from "./components/TopRated/TopRated";
 import AccordionCustom from "./components/accordion/AccordionCustom";
 
 const apiKey = "5a6077716d3404c52264bcf17f97a3d3";
-
-function Main() {
+function Main({ theme }) {
     const [content, setContent] = useState([]);
     const loaded = [...content];
     const [tv, movie] = useState("all");
@@ -29,6 +26,8 @@ function Main() {
     const [done, setDone] = useState(true);
     const [categoriesId, setCategoriesId] = useState(12)
     const [categoryName, setCategoryName] = useState("All")
+
+
 
     movie.toString();
     setTimeout(() => {
@@ -42,7 +41,6 @@ function Main() {
             .then((data) => {
                 setContent(data.results);
                 setPage(data.page);
-                console.log(data.results)
             });
     };
 
@@ -64,18 +62,19 @@ function Main() {
     /////////////////  UI will start from here below 👇  //////////////////////
     return (<div
         style={{
-            overflowY: done ? 'hidden' : 'scroll'
+            overflowY: done ? 'hidden' : 'scroll',
+            backgroundColor: theme ? "black" : "white"
         }}
         className="rel">
         <br />
-        {done && <div className="full-container">
-            <Lottie className={isMobile ? 'w-50' : "50"} animationData={loadingAnimation} />
+        {done && <div className={`${theme ? "full-container-dark" :"full-container"}`}>
+            <Lottie className={isMobile ? 'w-50' : "w-25"} animationData={loadingAnimation} />
         </div>}
         {/*<h1 className={'text-center'}>Category: {categoryName}</h1>*/}
         <AccordionCustom>
 
             <div className="accordion-item">
-                <h2 className="accordion-header" id="flush-headingOne">
+                <h2 className={`accordion-header ${theme ? 'bg-black':"bg-white"}`} id="flush-headingOne">
                     <center>
                         <button
                             style={{
@@ -95,6 +94,7 @@ function Main() {
                         {
                             genres.map((e, i) => (
                                 <span
+                                    key={i}
                                     style={{
                                         backgroundColor: "#F5EFE6",
                                         fontWeight: "normal"
@@ -122,7 +122,9 @@ function Main() {
         </AccordionCustom>
         {/*<TopRated/>*/}
         {loaded.length && (<div className="container-fluid   py-3">
-            <h1 className="text-center pop fs-4">
+            <h1
+                className={` text-center pop fs-4 ${theme && "text-white"}`}
+            >
                 Top Popular Movies and Tv Series 🔥
             </h1>
             <div className="row">
@@ -143,6 +145,7 @@ function Main() {
                                     date={e.release_date || "Release Date is not available"}
                                     type={e.media_type}
                                     alt={"a"}
+                                    theme={theme}
                                     vote={e.vote_average}
                                     movieImage={e.poster_path ? img_500 + "/" + e.poster_path : "https://st4.depositphotos.com/14953852/24787/v/600/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg"}
                                     adult={e.adult}

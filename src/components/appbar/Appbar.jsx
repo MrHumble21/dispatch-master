@@ -2,19 +2,25 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "./logo.svg";
-import { TfiHandPointDown } from "react-icons/tfi";
-import {TbEqual} from 'react-icons/tb'
-import {FaTimes} from 'react-icons/fa'
-import PanToolAltIcon from "@mui/icons-material/PanToolAlt";
-function Appbar() {
+import logodark from "./logoDark.svg";
+import { TbEqual } from 'react-icons/tb'
+import { FaTimes } from 'react-icons/fa'
+
+function Appbar({ theme }) {
   const [down, up] = useState(false);
+  console.log(theme)
   return (
-    <nav className="navbar  navbar-expand-lg navbar-light glass">
+    <nav
+      style={{
+        background: theme ? "black" : "white",
+
+      }}
+      className={`navbar  navbar-expand-lg ${theme ? 'navbar-dark' : "navbar-light"}`}>
       <div className="container-fluid">
         <Link to={"/"} className="navbar-brand">
           <img
             className=""
-            src={logo}
+            src={!theme ? logo : logodark}
             alt=""
           />
         </Link>
@@ -57,7 +63,7 @@ function Appbar() {
                 Search a movie
               </Link>
             </li>
-           
+
           </ul>
         </div>
       </div>

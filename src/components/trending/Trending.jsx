@@ -10,7 +10,7 @@ import "animate.css/animate.min.css";
 import { AnimationOnScroll } from "react-animation-on-scroll";
 import TopRated from "../TopRated/TopRated";
 const apiKey = "5a6077716d3404c52264bcf17f97a3d3";
-function Trending() {
+function Trending({ theme }) {
   const [content, setContent] = useState([]);
   const [done, setDone] = useState(true);
   const [tv, movie] = useState("all");
@@ -23,7 +23,7 @@ function Trending() {
 
   setTimeout(() => {
     setDone(false);
-  },4000)
+  }, 4000)
   const url = `https://api.themoviedb.org/3/trending/${tv}/week?api_key=${apiKey}
   `;
   const fetchPopularMovies = async () => {
@@ -38,20 +38,30 @@ function Trending() {
     fetchPopularMovies();
   }, [tv]);
   document.body.style.overflow = done ? 'hidden' : 'scroll'
+  document.body.style.backgroundColor = theme ? 'black' : 'white  '
 
   return (
     <>
       <br />
       <br />
       {
-        done && <div className="full-container">
+        done && <div className={`${theme ? "full-container-dark" :"full-container"}`}>
           <Lottie className={isMobile ? 'w-75' : "w-25"} animationData={loadingAnimation} />
         </div>}
-     
+
       {content.length && (
-        <div className="container-fluid   mt-5 py-3">
+        <div
+          style={{
+            backgroundColor: theme ? "black" : "white"
+          }}
+          className="container-fluid   mt-5 py-3">
           <center>
-            <h3>{tv === "all" ? "Not Sorted" : `Sorted by ${tv}`}</h3>
+            <h3
+              style={{
+                color: theme ? 'black !important' : 'white !important'
+              }}
+
+            >{tv === "all" ? "Not Sorted" : `Sorted by ${tv}`}</h3>
 
             {/* <Button onClick={handleMovie}>Movies</Button>
               <Button onClick={handleTv}>Tv Series</Button>
@@ -98,6 +108,7 @@ function Trending() {
                         date={e.release_date || "Release Date is not available"}
                         type={e.media_type}
                         alt={"a"}
+                        theme={theme}
                         vote={e.vote_average}
                         movieImage={img_500 + "/" + e.poster_path}
                         adult={e.adult}

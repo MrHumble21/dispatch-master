@@ -9,14 +9,13 @@ import circle from './circle.svg'
 
 import moment from "moment/moment";
 
-// console.log(moment("4-15-2000").format("Do MMM  YYYY"));
 const MovieCard = ({
     movieImage,
     alt,
     title,
     date,
     vote,
-
+    theme,
     country,
     margin,
     genre_ids = [],
@@ -33,10 +32,16 @@ const MovieCard = ({
             }
         }
     }
+    console.log({ card: theme })
     const removedDuplicates = [...new Set(arr)];
 
     return (
-        <div className={`custom_card glass m-0 m-height-card ${margin}`}>
+        <div
+            style={{
+                backgroundColor: theme ? "black" : "white"
+
+            }}
+            className={`custom_card ${theme && "bg-dark text-white"} m-0 m-height-card ${margin}`}>
             <div className="container   py-2 m-0 ">
                 {<img
                     className="w-100 rounded card_image"
@@ -47,7 +52,7 @@ const MovieCard = ({
             </div>
             <CardContent className="px-2 py-1">
                 <Typography
-                    className="m-0"
+                    className={`m-0 ${theme && "text-white-50"}`}
                     variant="h5"
                     fontWeight={"bold"}
                     color={"#2C061F"}
@@ -57,7 +62,10 @@ const MovieCard = ({
                     {title}
                 </Typography>
 
-                <p style={{ fontSize: "11px", color: "#17223B" }} className="m-0 p-0">
+                <p style={{ fontSize: "11px", color: "#17223B" }}
+
+                    className={`m-0 p-0 ${theme && "text-white-50"}`}
+                >
                     {country ? (
                         <>
                             <FlagIcon /> Country: {country}
@@ -68,18 +76,18 @@ const MovieCard = ({
                 </p>
 
                 <Rating
-                        size="small"
-                        className="m-0"
-                        value={vote / 2}
-                        readOnly
-                        precision={0.5}
-                    />
+                    size="small"
+                    className="m-0"
+                    value={vote / 2}
+                    readOnly
+                    precision={0.5}
+                />
                 <div className={'my-auto'}>
                     <div
                         className={`${vote / 2 > 2.5 ? "bg-success" : "bg-danger"} text-white  rounded d-inline-block p-2`}
                     >{(vote / 2).toFixed(1)}</div>
 
-                   
+
                 </div>
 
                 {removedDuplicates.map((e, i) => (

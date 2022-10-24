@@ -1,23 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 import Popular from "./Popular";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Trending from "./components/trending/Trending";
 import Search from "./components/Search/Search";
 import Description from "./components/Description/Description";
 
 import Appbar from "./components/appbar/Appbar";
 import Main from "./Main";
+import { BsFillMoonStarsFill } from "react-icons/bs";
 function App() {
+  const [dark, setDark] = useState('true');
   return (
-    <BrowserRouter>
-      <Appbar />
+    <>
+
+
+      <BsFillMoonStarsFill
+        onClick={() => {
+          setDark(!dark)
+          console.log(dark)
+        }}
+        className="night fs-2 text-warning" />
+      <Appbar theme={dark} />
       <Routes>
-        <Route path="/" element={<Main />}></Route>
-        <Route path="/trending" element={<Trending />} />
-        <Route path=":id" element={<Description />} />
-        <Route path="/search" element={<Search />} />
+        <Route path="/" element={<Main theme={dark} />}></Route>
+        <Route path="/trending" element={<Trending  theme={dark}/>} />
+        <Route path=":id" element={<Description  theme={dark} />} />
+        <Route path="/search" element={<Search theme={dark} />} />
       </Routes>
-    </BrowserRouter>
+
+    </>
   );
 }
 

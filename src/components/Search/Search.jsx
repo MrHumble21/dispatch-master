@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { img_500 } from "../configs/config";
 import notFound from "./404.png";
 import { useDebounce } from "../../hooks/useDebounce";
-function Search() {
+function Search({theme}) {
   const [searchInput, setSearchInput] = useState("");
   const [res, setRes] = useState([]);
   const [id, setId] = useState("");
@@ -26,27 +26,37 @@ function Search() {
   };
 
   useEffect(() => {
-    console.log("Debounced", debouncedSearchText);
     fetchdata();
-    console.log("Res", res);
   }, [debouncedSearchText]);
 
 
 
 
   return (
-    <>
+    <div 
+    style={{
+      backgroundColor: theme ? "black" :'white', minHeight:"100vh"
+      
+    }}
+    >
       <br />
       <br />
       <br />
       <br />
 
-      <div className="container p-3">
+      <div 
+     
+      className="container p-3">
         <center>
-          <h2>You can search movies from here</h2>
+          <h2 style={{
+            color: theme ? 'white':'black'
+          }}>You can search movies from here</h2>
         </center>
         <div className="d-flex justify-content-center align-items-center">
           <input
+            style={{
+              backgroundColor: theme ? "white" :'white'
+            }}
             className={` form-control p-2 ${s.inp}`}
             type="search"
             name=""
@@ -60,7 +70,9 @@ function Search() {
 
         <div className="container">
           {res?.results?.length === 0 && debouncedSearchText?.length !== 0 && (
-            <h1 className="text-center">Not found😔</h1>
+            <h1 
+
+            className="text-center">Not found😔</h1>
           )}
           <div className="row">
             {res.results &&
@@ -72,6 +84,7 @@ function Search() {
                       date={e.release_date || "Release Date is not available"}
                       type={e.media_type}
                       alt={"a"}
+                      theme={theme}
                       vote={e.vote_average}
                       country={e.origin_country[0]}
                       genre_ids={e.genre_ids}
@@ -87,7 +100,7 @@ function Search() {
         </div>
 
       </div>
-    </>
+    </div>
   );
 }
 

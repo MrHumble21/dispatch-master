@@ -20,7 +20,9 @@ import { Link } from "react-router-dom";
 import { genres } from "./genres";
 import TopRated from "./components/TopRated/TopRated";
 const apiKey = "5a6077716d3404c52264bcf17f97a3d3";
-function Popular() {
+function Popular({
+  theme
+}) {
   const [content, setContent] = useState([]);
   const loaded = [...content];
   const [tv, movie] = useState("all");
@@ -65,7 +67,9 @@ function Popular() {
       className="rel">
       <br />
       {
-        done && <div className="full-container">
+        done && <div
+        
+        className={`${theme ? "full-container-dark" :"full-container"}`}>
           <Lottie className={isMobile ? 'w-75' : "w-25"} animationData={loadingAnimation} />
         </div>}
       <TopRated />
@@ -92,6 +96,7 @@ function Popular() {
                       }
                     >
                       <MovieCard
+                        theme={theme}
                         title={e.title || e.name}
                         date={e.release_date || "Release Date is not available"}
                         type={e.media_type}
