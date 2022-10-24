@@ -43,6 +43,15 @@ function Appbar({ theme }) {
                 to={"/"}
                 className="animate__fadeInUp choverr nav-link animate__animated animate__slow"
               >
+                Main page
+                <span className="visually-hidden">(current)</span>
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link
+                to={"/popular"}
+                className="animate__fadeInUp choverr nav-link animate__animated animate__slow"
+              >
                 Popular Movies
                 <span className="visually-hidden">(current)</span>
               </Link>

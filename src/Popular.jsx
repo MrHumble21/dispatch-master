@@ -32,7 +32,7 @@ function Popular({
   movie.toString();
   setTimeout(() => {
     setDone(false);
-  }, 5500)
+  }, 1500)
   const url = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=${page}`;
   const fetchPopularMovies = async () => {
     await fetch(url)
@@ -62,14 +62,16 @@ function Popular({
   return (
     <div
       style={{
-        overflowY: done ? 'hidden' : 'scroll'
+        overflowY: done ? 'hidden' : 'scroll',
+        backgroundColor: theme ? "black" : "white"
+
       }}
       className="rel">
       <br />
       {
         done && <div
-        
-        className={`${theme ? "full-container-dark" :"full-container"}`}>
+
+          className={`${theme ? "full-container-dark" : "full-container"}`}>
           <Lottie className={isMobile ? 'w-75' : "w-25"} animationData={loadingAnimation} />
         </div>}
       <TopRated />

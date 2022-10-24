@@ -32,7 +32,7 @@ function Main({ theme }) {
     movie.toString();
     setTimeout(() => {
         setDone(false);
-    }, 5500)
+    }, 1500)
     const categories = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_genres=${categoriesId}`
     // const url = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=${page}`;
     const fetchPopularMovies = async () => {
@@ -138,7 +138,7 @@ function Main({ theme }) {
                                 initiallyVisible={true}
                                 animateOnce={true}
                                 duration={1}
-                                animateIn={i % 2 !== 0 ? "animate__fadeInUp" : "animate__fadeInUp"}
+                                animateIn={"animate__fadeInUp"}
                             >
                                 <MovieCard
                                     title={e.title || e.name}

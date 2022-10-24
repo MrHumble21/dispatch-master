@@ -23,6 +23,7 @@ function App() {
       <Appbar theme={dark} />
       <Routes>
         <Route path="/" element={<Main theme={dark} />}></Route>
+        <Route path="/popular" element={<Popular theme={dark} />}></Route>
         <Route path="/trending" element={<Trending  theme={dark}/>} />
         <Route path=":id" element={<Description  theme={dark} />} />
         <Route path="/search" element={<Search theme={dark} />} />
