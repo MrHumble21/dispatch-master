@@ -1,0 +1,24 @@
+<svg
+                    x="0px"
+                    y="0px"
+                    viewBox="0 0 397.6 435.3"
+                    enable-background="new 0 0 397.6 435.3"
+                    xml:space="preserve"
+                    className="svg"
+                >
+                    <circle
+                        className="circle-bg"
+                        cx="198.3"
+                        cy="217.3"
+                        r="139.2"
+                        transform="rotate(270 198.3 217.3)"
+                    />
+
+                    <circle
+                        className="circle"
+                        cx="198.3"
+                        cy="217.3"
+                        r="139.2"
+                        transform="rotate(270 198.3 217.3)"
+                    />
+                </svg>

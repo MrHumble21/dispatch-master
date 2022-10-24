@@ -1,21 +1,21 @@
-import {useEffect, useState, useRef} from "react";
+import { useEffect, useState, useRef } from "react";
 import "./App.css";
 // import { isMobile } from "react-device-detect";
 import Lottie from "lottie-react";
-import {isMobile} from 'react-device-detect'
+import { isMobile } from 'react-device-detect'
 import loadingAnimation from './components/trending/Loader.json'
 import {
     BsFillArrowUpCircleFill, BsFillArrowRightSquareFill, BsFillArrowLeftSquareFill,
 } from "react-icons/bs";
 // animate css
 import "animate.css/animate.min.css";
-import {AnimationOnScroll} from "react-animation-on-scroll";
+import { AnimationOnScroll } from "react-animation-on-scroll";
 // carousel
-import {Splide, SplideSlide} from "@splidejs/react-splide";
+import { Splide, SplideSlide } from "@splidejs/react-splide";
 import MovieCard from "./components/card/MovieCard";
-import {img_500} from "./components/configs/config";
-import {Link} from "react-router-dom";
-import {genres} from "./genres";
+import { img_500 } from "./components/configs/config";
+import { Link } from "react-router-dom";
+import { genres } from "./genres";
 import TopRated from "./components/TopRated/TopRated";
 import AccordionCustom from "./components/accordion/AccordionCustom";
 
@@ -67,31 +67,60 @@ function Main() {
             overflowY: done ? 'hidden' : 'scroll'
         }}
         className="rel">
-        <br/>
+        <br />
         {done && <div className="full-container">
-            <Lottie className={isMobile ? 'w-75' : "w-25"} animationData={loadingAnimation}/>
+            <Lottie className={isMobile ? 'w-50' : "50"} animationData={loadingAnimation} />
         </div>}
         {/*<h1 className={'text-center'}>Category: {categoryName}</h1>*/}
         <AccordionCustom>
-            {
-                genres.map((e, i) => (
-                    <span
-                        style={{
-                            backgroundColor:"#F5EFE6",
-                            fontWeight:"normal"
-                        }}
-                        id={e.id}
-                        onClick={(event) => {
-                            setCategoryName(e.name)
-                            setCategoriesId(e.id)
-                        }}
-                        role={'button'}
-                        className="badge chover text-black d-inline-block fs-4 m-2">{e.name}</span>
 
-                ))
-            }
+            <div className="accordion-item">
+                <h2 className="accordion-header" id="flush-headingOne">
+                    <center>
+                        <button
+                            style={{
+                                backgroundColor: "#FF1E00"
+                            }}
+                            className="  btn p-3 collapsed fs-1 text-white text-center" type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseOne" aria-expanded="false"
+                            aria-controls="flush-collapseOne">
+                            See All Categories
+                        </button>
+                    </center>
+                </h2>
+                <div id="flush-collapseOne" className="accordion-collapse collapse" aria-labelledby="flush-headingOne"
+                    data-bs-parent="#accordionFlushExample">
+                    <div className="accordion-body">
+                        {
+                            genres.map((e, i) => (
+                                <span
+                                    style={{
+                                        backgroundColor: "#F5EFE6",
+                                        fontWeight: "normal"
+                                    }}
+                                    id={e.id}
+                                    onClick={(event) => {
+                                        setCategoryName(e.name)
+                                        setCategoriesId(e.id)
+                                        window.scrollTo({
+                                            top: 0, behavior: "smooth",
+                                        });
+
+                                        document.querySelector("#flush-collapseOne").classList.toggle("show")
+                                    }}
+                                    role={'button'}
+                                    className={`badge chover text-black d-inline-block ${isMobile ? "fs-5 m-1":"fs-4 m-2"}`}>{e.name}</span>
+
+                            ))
+                        }
+                    </div>
+                </div>
+            </div>
+
+
         </AccordionCustom>
-        <TopRated/>
+        {/*<TopRated/>*/}
         {loaded.length && (<div className="container-fluid   py-3">
             <h1 className="text-center pop fs-4">
                 Top Popular Movies and Tv Series 🔥
@@ -103,7 +132,8 @@ function Main() {
                         <Link state={e} to={`/${e.id}`}>
                             <AnimationOnScroll
                                 animatePreScroll={true}
-                                offset={600}
+                                offset={1000}
+                                initiallyVisible={true}
                                 animateOnce={true}
                                 duration={1}
                                 animateIn={i % 2 !== 0 ? "animate__fadeInUp" : "animate__fadeInUp"}
@@ -133,8 +163,8 @@ function Main() {
                     type="button"
                 >
                     <BsFillArrowLeftSquareFill
-                        style={{color:"#FF1E00"}}
-                        className="fs-2"/>
+                        style={{ color: "#FF1E00" }}
+                        className="fs-2" />
                 </button>
                 Page:{page}
                 <button
@@ -148,8 +178,8 @@ function Main() {
                     type="button"
                 >
                     <BsFillArrowRightSquareFill
-                        style={{color:"#FF1E00"}}
-                        className="fs-2"/>
+                        style={{ color: "#FF1E00" }}
+                        className="fs-2" />
                 </button>
             </center>
         </div>)}
@@ -162,12 +192,12 @@ function Main() {
             className={"toTop  animated_animate"}
         >
             <BsFillArrowUpCircleFill
-                style={{color:"#FF1E00"}}
-                className="arrowtop "/>
+                style={{ color: "#FF1E00" }}
+                className="arrowtop " />
         </div>
-        <br/>
-        <br/>
-        <br/>
+        <br />
+        <br />
+        <br />
     </div>);
 }
 
