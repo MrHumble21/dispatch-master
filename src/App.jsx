@@ -6,12 +6,13 @@ import Search from "./components/Search/Search";
 import Description from "./components/Description/Description";
 
 import Appbar from "./components/appbar/Appbar";
+import Main from "./Main";
 function App() {
   return (
     <BrowserRouter>
       <Appbar />
       <Routes>
-        <Route path="/" element={<Popular />}></Route>
+        <Route path="/" element={<Main />}></Route>
         <Route path="/trending" element={<Trending />} />
         <Route path=":id" element={<Description />} />
         <Route path="/search" element={<Search />} />

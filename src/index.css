@@ -157,3 +157,15 @@ body {
 #splide01{
   padding: 35px 0 !important;
 }
+
+.chover:hover{
+  background-color: #FF1E00 !important;
+  color: white !important;
+  /*transition: 0.8s ease-in;*/
+}
+
+.choverr:hover{
+  color: #FF1E00 !important;
+
+  /*transition: 0.8s ease-in;*/
+}

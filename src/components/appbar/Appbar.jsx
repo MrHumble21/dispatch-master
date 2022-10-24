@@ -13,7 +13,7 @@ function Appbar() {
       <div className="container-fluid">
         <Link to={"/"} className="navbar-brand">
           <img
-            className="animate__animated animate__delay-1s w-75 animate__slow animate__flipInX "
+            className=""
             src={logo}
             alt=""
           />
@@ -35,7 +35,7 @@ function Appbar() {
             <li className="nav-item">
               <Link
                 to={"/"}
-                className="animate__fadeInTopRight nav-link animate__animated animate__slow"
+                className="animate__fadeInUp choverr nav-link animate__animated animate__slow"
               >
                 Popular Movies
                 <span className="visually-hidden">(current)</span>
@@ -44,7 +44,7 @@ function Appbar() {
             <li className="nav-item">
               <Link
                 to={"/trending"}
-                className="animate__fadeInTopRight animate__animated animate__slow nav-link"
+                className="animate__fadeInUp choverr animate__animated animate__slow nav-link"
               >
                 Trending Movies
               </Link>
@@ -52,7 +52,7 @@ function Appbar() {
             <li className="nav-item">
               <Link
                 to={"/search"}
-                className="animate__fadeInTopRight animate__animated animate__slow nav-link"
+                className="animate__fadeInUp choverr animate__animated animate__slow nav-link"
               >
                 Search a movie
               </Link>

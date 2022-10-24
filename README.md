@@ -1,14 +1,14 @@
-# Getting Started with Create React App
+# Humble Movies platform
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was created with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
-In the project directory, you can run:
+To get started the project you should open project directory via terminal and run 
 
-### `npm start`
+### `yarn install`
 
-Runs the app in the development mode.\
+It will install all necessariy .\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 The page will reload when you make changes.\
