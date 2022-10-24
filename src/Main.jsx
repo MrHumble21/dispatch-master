@@ -74,7 +74,7 @@ function Main({ theme }) {
         <AccordionCustom>
 
             <div className="accordion-item">
-                <h2 className={`accordion-header ${theme ? 'bg-black':"bg-white"}`} id="flush-headingOne">
+                <h2 className={`accordion-header my-1 ${theme ? 'bg-black':"bg-white"}`} id="flush-headingOne">
                     <center>
                         <button
                             style={{
@@ -88,9 +88,9 @@ function Main({ theme }) {
                         </button>
                     </center>
                 </h2>
-                <div id="flush-collapseOne" className="accordion-collapse collapse" aria-labelledby="flush-headingOne"
+                <div id="flush-collapseOne" className="accordion-collapse ${isMobile ? 'fs-4' : 'fs-1'} collapse" aria-labelledby="flush-headingOne"
                     data-bs-parent="#accordionFlushExample">
-                    <div className="accordion-body">
+                    <div className={`accordion-body  ${isMobile ? 'fs-4' : 'fs-1'} ${theme ?  'bg-dark':'bg-light'}`}>
                         {
                             genres.map((e, i) => (
                                 <span

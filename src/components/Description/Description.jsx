@@ -19,7 +19,7 @@ import MovieCard from "../card/MovieCard";
 import { img_500 } from "../configs/config";
 import notFound from "./404.png";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
-function Description({theme}) {
+function Description({ theme }) {
   const location = useLocation();
   const data = location.state;
   const [trailersId, setTrailers] = useState();
@@ -29,7 +29,7 @@ function Description({theme}) {
 
   setTimeout(() => {
     setDone(false);
-  },1000)
+  }, 1000)
   let url = `https://api.themoviedb.org/3/movie/${data.id}/videos?api_key=5a6077716d3404c52264bcf17f97a3d3&language=en-US`;
   const genres = async () => {
     await fetch(
@@ -64,13 +64,13 @@ function Description({theme}) {
 
   return (
     <div style={{
-      backgroundColor:theme? 'black': 'white'
+      backgroundColor: theme ? 'black' : 'white'
     }}>
       <div className="container  p-3">
-      {
-        done && <div className={`${theme ? "full-container-dark" : "full-container"}`}>
-          <Lottie className={isMobile ? 'w-75' : "w-25"} animationData={loadingAnimation} />
-        </div>}
+        {
+          done && <div className={`${theme ? "full-container-dark" : "full-container"}`}>
+            <Lottie className={isMobile ? 'w-75' : "w-25"} animationData={loadingAnimation} />
+          </div>}
         <div className="row py-5">
           <div className="col-md-6 col-12  p-4 d-flex justify-content-center">
             <img
@@ -86,23 +86,23 @@ function Description({theme}) {
             <div className="container">
               <div className="row">
                 <div className="col-sm-12">
-                  <h2 className="fs-1 text-black">
+                  <h2 className={`fs-1 ${theme ? 'text-white' : 'text-black'}`}>
                     {data.original_title || data.name}
                   </h2>
-                  <p className="m-0 fs-5 text-black  ">
-                  <HistoryToggleOffIcon style={{ color: "red",marginRight:"8px" }} />
-                  
-                    { moment(data.first_air_date).format("MMMM Do   YYYY") ||
-                       moment(data.release_date).format("MMMM Do   YYYY") ||
+                  <p className={`m-0 fs-5 ${theme ? 'text-white' : 'text-black'}  `}>
+                    <HistoryToggleOffIcon style={{ color: "red", marginRight: "8px", marginBottom:'8px' }} />
+
+                    {moment(data.first_air_date).format("MMMM Do   YYYY") ||
+                      moment(data.release_date).format("MMMM Do   YYYY") ||
                       "Release Date is not available"}
                   </p>
                 </div>
-               
+
               </div>
-              <p className="m-0">Rating: {data.vote_average / 2}</p>
+              <p className={`m-0 ${theme ? 'text-white':'text-black'}`}>Rating: {data.vote_average / 2}</p>
               <Rating name="read-only" value={data.vote_average / 2} readOnly />
-              <p>{data.overview || <Skeleton count={5} />  }</p>
-              <p className="fs-5">Genres:</p>
+              <p className={`{ ${theme ? 'text-white':'text-black'}`}>{data.overview || <Skeleton count={5} />}</p>
+              <p className={`{fs-5 ${theme ? 'text-white':'text-black'}`}>Genres:</p>
               {movie &&
                 movie.genres.map((e, i) => (
                   <span
@@ -130,7 +130,9 @@ function Description({theme}) {
             </div>
           </div>
         </div>
-        <h1 className="text-center">Recommended Movies & TV Series</h1>
+        <h1
+        className={`text-center {fs-5 ${theme ? 'text-white':'text-black'}`}
+       >Recommended Movies & TV Series</h1>
         <div className="row mt-4">
           <div className="col-sm-12 ">
             <Splide

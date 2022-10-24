@@ -19,7 +19,7 @@ function App() {
           setDark(!dark)
           console.log(dark)
         }}
-        className="night fs-2 text-warning" />
+        className="night fs-2 text-warning glass" />
       <Appbar theme={dark} />
       <Routes>
         <Route path="/" element={<Main theme={dark} />}></Route>
