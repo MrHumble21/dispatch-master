@@ -81,7 +81,7 @@ function Main() {
                             style={{
                                 backgroundColor: "#FF1E00"
                             }}
-                            className="  btn p-3 collapsed fs-1 text-white text-center" type="button"
+                            className={` btn p-3 collapsed ${isMobile ? 'fs-4' : 'fs-1'} text-white text-center`} type="button"
                             data-bs-toggle="collapse"
                             data-bs-target="#flush-collapseOne" aria-expanded="false"
                             aria-controls="flush-collapseOne">
@@ -110,7 +110,7 @@ function Main() {
                                         document.querySelector("#flush-collapseOne").classList.toggle("show")
                                     }}
                                     role={'button'}
-                                    className={`badge chover text-black d-inline-block ${isMobile ? "fs-5 m-1":"fs-4 m-2"}`}>{e.name}</span>
+                                    className={`badge chover text-black d-inline-block ${isMobile ? " m-1" : "fs-4 m-2"}`}>{e.name}</span>
 
                             ))
                         }
