@@ -19,7 +19,7 @@ import MovieCard from "../card/MovieCard";
 import { img_500 } from "../configs/config";
 import notFound from "./404.png";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
-function Description() {
+function Description({theme}) {
   const location = useLocation();
   const data = location.state;
   const [trailersId, setTrailers] = useState();
@@ -29,7 +29,7 @@ function Description() {
 
   setTimeout(() => {
     setDone(false);
-  },1800)
+  },1000)
   let url = `https://api.themoviedb.org/3/movie/${data.id}/videos?api_key=5a6077716d3404c52264bcf17f97a3d3&language=en-US`;
   const genres = async () => {
     await fetch(
@@ -63,10 +63,12 @@ function Description() {
   document.body.style.overflow = done ? 'hidden' : 'scroll'
 
   return (
-    <>
+    <div style={{
+      backgroundColor:theme? 'black': 'white'
+    }}>
       <div className="container  p-3">
       {
-        done && <div className="full-container">
+        done && <div className={`${theme ? "full-container-dark" : "full-container"}`}>
           <Lottie className={isMobile ? 'w-75' : "w-25"} animationData={loadingAnimation} />
         </div>}
         <div className="row py-5">
@@ -148,6 +150,7 @@ function Description() {
                         date={e.release_date || "Release Date is not available"}
                         type={e.media_type}
                         alt={"a"}
+                        theme={theme}
                         vote={e.vote_average}
                         genre_ids={e.genre_ids}
                         movieImage={
@@ -164,7 +167,7 @@ function Description() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
