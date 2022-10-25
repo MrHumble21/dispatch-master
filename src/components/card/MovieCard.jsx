@@ -46,6 +46,7 @@ const MovieCard = ({
       <div className="container   py-2 m-0 ">
         {
           <img
+          loading="lazy"
             className="w-100 m-0 p-0 rounded card_image"
             component="img"
             src={movieImage}
