@@ -80,7 +80,7 @@ function Main({ theme }) {
                             style={{
                                 backgroundColor: "#FF1E00"
                             }}
-                            className={` btn p-3 collapsed ${isMobile ? 'fs-4' : 'fs-1'} text-white text-center`} type="button"
+                            className={` btn px-5 py-3 collapsed ${isMobile ? 'fs-4' : 'fs-1'} text-white text-center`} type="button"
                             data-bs-toggle="collapse"
                             data-bs-target="#flush-collapseOne" aria-expanded="false"
                             aria-controls="flush-collapseOne">

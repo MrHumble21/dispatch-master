@@ -64,7 +64,7 @@ function Description({ theme }) {
 
   return (
     <div style={{
-      backgroundColor: theme ? 'black' : 'white'
+      backgroundColor: theme ? 'black' : 'white', minHeight: '100vh'
     }}>
       <div className="container  p-3">
         {
@@ -90,7 +90,7 @@ function Description({ theme }) {
                     {data.original_title || data.name}
                   </h2>
                   <p className={`m-0 fs-5 ${theme ? 'text-white' : 'text-black'}  `}>
-                    <HistoryToggleOffIcon style={{ color: "red", marginRight: "8px", marginBottom:'8px' }} />
+                    <HistoryToggleOffIcon style={{ color: "red", marginRight: "8px", marginBottom: '8px' }} />
 
                     {moment(data.first_air_date).format("MMMM Do   YYYY") ||
                       moment(data.release_date).format("MMMM Do   YYYY") ||
@@ -99,10 +99,10 @@ function Description({ theme }) {
                 </div>
 
               </div>
-              <p className={`m-0 ${theme ? 'text-white':'text-black'}`}>Rating: {data.vote_average / 2}</p>
+              <p className={`m-0 ${theme ? 'text-white' : 'text-black'}`}>Rating: {data.vote_average / 2}</p>
               <Rating name="read-only" value={data.vote_average / 2} readOnly />
-              <p className={`{ ${theme ? 'text-white':'text-black'}`}>{data.overview || <Skeleton count={5} />}</p>
-              <p className={`{fs-5 ${theme ? 'text-white':'text-black'}`}>Genres:</p>
+              <p className={`{ ${theme ? 'text-white' : 'text-black'}`}>{data.overview || <Skeleton count={5} />}</p>
+              <p className={`{fs-5 ${theme ? 'text-white' : 'text-black'}`}>Genres:</p>
               {movie &&
                 movie.genres.map((e, i) => (
                   <span
@@ -131,43 +131,45 @@ function Description({ theme }) {
           </div>
         </div>
         <h1
-        className={`text-center {fs-5 ${theme ? 'text-white':'text-black'}`}
-       >Recommended Movies & TV Series</h1>
-        <div className="row mt-4">
-          <div className="col-sm-12 ">
-            <Splide
-              options={{
-                perPage: isMobile ? 1 : 5,
-                rewind: true,
-              }}
-              aria-label="My Favorite Images"
-            >
-              {recommended &&
-                recommended.map((e, i) => (
-                  <SplideSlide key={i}>
-                    <Link state={e} to={`/${e.id}`}>
-                      <MovieCard
-                        margin={"mx-2 "}
-                        title={e.title || e.name}
-                        date={e.release_date || "Release Date is not available"}
-                        type={e.media_type}
-                        alt={"a"}
-                        theme={theme}
-                        vote={e.vote_average}
-                        genre_ids={e.genre_ids}
-                        movieImage={
-                          e.poster_path
-                            ? img_500 + "/" + e.poster_path
-                            : notFound
-                        }
-                        adult={e.adult}
-                      />
-                    </Link>
-                  </SplideSlide>
-                ))}
-            </Splide>
+          className={`text-center {fs-5 ${theme ? 'text-white' : 'text-black'}`}
+        >Recommended Movies & TV Series</h1>
+        {recommended &&
+          <div className="row mt-4">
+            <div className="col-sm-12 ">
+              <Splide
+                options={{
+                  perPage: isMobile ? 1 : 5,
+                  rewind: true,
+                }}
+                aria-label="My Favorite Images"
+              >
+                {recommended &&
+                  recommended.map((e, i) => (
+                    <SplideSlide key={i}>
+                      <Link state={e} to={`/${e.id}`}>
+                        <MovieCard
+                          margin={"mx-2 "}
+                          title={e.title || e.name}
+                          date={e.release_date || "Release Date is not available"}
+                          type={e.media_type}
+                          alt={"a"}
+                          theme={theme}
+                          vote={e.vote_average}
+                          genre_ids={e.genre_ids}
+                          movieImage={
+                            e.poster_path
+                              ? img_500 + "/" + e.poster_path
+                              : notFound
+                          }
+                          adult={e.adult}
+                        />
+                      </Link>
+                    </SplideSlide>
+                  ))}
+              </Splide>
+            </div>
           </div>
-        </div>
+        }
       </div>
     </div>
   );

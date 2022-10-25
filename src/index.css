@@ -190,3 +190,8 @@ body {
   border-radius: 100%;
   padding: 5px; cursor:pointer;
 }
+
+p, a {
+  font-family: 'Abel', sans-serif !important;
+
+}
