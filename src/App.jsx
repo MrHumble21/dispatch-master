@@ -5,11 +5,9 @@ import Trending from "./components/trending/Trending";
 import Search from "./components/Search/Search";
 import Description from "./components/Description/Description";
 import logo from './components/appbar/logo.png'
-import logoDark from './components/appbar/logoDark.png'
 import {
   BrowserView,
   MobileView,
-  isBrowser,
   isMobile,
 } from "react-device-detect";
 import Appbar from "./components/appbar/Appbar";

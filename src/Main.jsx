@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { useEffect, useState, useRef } from "react";
 import "./App.css";
-// import { isMobile } from "react-device-detect";
+import { AutoScroll } from "@splidejs/splide-extension-auto-scroll";
 import Lottie from "lottie-react";
 import { isMobile, BrowserView, MobileView } from "react-device-detect";
 import loadingAnimation from "./components/trending/Loader.json";
@@ -25,7 +25,7 @@ import "@splidejs/react-splide/css/skyblue";
 import "@splidejs/react-splide/css/sea-green";
 import "@splidejs/react-splide/css/core";
 import { IoIosArrowDown } from "react-icons/io";
-import TopRated from './components/TopRated/TopRated'
+import TopRated from "./components/TopRated/TopRated";
 function Main({ theme }) {
   const [content, setContent] = useState([]);
   const loaded = [...content];
@@ -187,15 +187,20 @@ function Main({ theme }) {
         <h1
           style={{
             color: !theme ? "black" : "white",
-            marginLeft: "55px",
+            // marginLeft: "55px",
           }}
         >
-          Action movies 
+          Action movies
         </h1>
         <Splide
           options={{
-            perPage: dimensions.width > 420 ? 7 : 2,
-            rewind: true,
+            type: "loop",
+            drag: "free",
+            focus: "center",
+            perPage:dimensions.width > 420 ? 7 : 2,
+            autoScroll: {
+              speed: 0.5,
+            },
           }}
           aria-label="My Favorite Images"
         >
@@ -208,14 +213,7 @@ function Main({ theme }) {
                 className="container d-flex"
               >
                 <Link state={action} to={`/${action.id}`}>
-                  <AnimationOnScroll
-                    animatePreScroll={true}
-                    offset={1000}
-                    initiallyVisible={true}
-                    animateOnce={true}
-                    duration={1}
-                    animateIn={"animate__fadeInUp"}
-                  >
+                
                     <MovieCard
                       title={action.title || action.name}
                       date={
@@ -232,7 +230,6 @@ function Main({ theme }) {
                       }
                       adult={action.adult}
                     />
-                  </AnimationOnScroll>
                 </Link>
               </div>
             </SplideSlide>
@@ -248,13 +245,17 @@ function Main({ theme }) {
             marginLeft: "55px",
           }}
         >
-          Adventure movies 
+          Adventure movies
         </h1>
         <Splide
-          options={{
-            perPage: dimensions.width > 420 ? 7 : 2,
-            rewind: true,
-            padding: "0",
+         options={{
+            type: "loop",
+            drag: "free",
+            focus: "center",
+            perPage:dimensions.width > 420 ? 7 : 2,
+            autoScroll: {
+              speed: 0.5,
+            },
           }}
           aria-label="My Favorite Images"
         >
@@ -267,14 +268,7 @@ function Main({ theme }) {
                 className="container d-flex"
               >
                 <Link state={action} to={`/${action.id}`}>
-                  <AnimationOnScroll
-                    animatePreScroll={true}
-                    offset={1000}
-                    initiallyVisible={true}
-                    animateOnce={true}
-                    duration={1}
-                    animateIn={"animate__fadeInUp"}
-                  >
+                  
                     <MovieCard
                       title={action.title || action.name}
                       date={
@@ -291,7 +285,6 @@ function Main({ theme }) {
                       }
                       adult={action.adult}
                     />
-                  </AnimationOnScroll>
                 </Link>
               </div>
             </SplideSlide>
@@ -307,12 +300,17 @@ function Main({ theme }) {
             marginLeft: "55px",
           }}
         >
-          Horror movies 
+          Horror movies
         </h1>
         <Splide
           options={{
-            perPage: dimensions.width > 420 ? 7 : 2,
-            rewind: true,
+            type: "loop",
+            drag: "free",
+            focus: "center",
+            perPage:dimensions.width > 420 ? 7 : 2,
+            autoScroll: {
+              speed: 0.5,
+            },
           }}
           aria-label="My Favorite Images"
         >
@@ -325,14 +323,7 @@ function Main({ theme }) {
                 className="container d-flex"
               >
                 <Link state={action} to={`/${action.id}`}>
-                  <AnimationOnScroll
-                    animatePreScroll={true}
-                    offset={1000}
-                    initiallyVisible={true}
-                    animateOnce={true}
-                    duration={1}
-                    animateIn={"animate__fadeInUp"}
-                  >
+                 
                     <MovieCard
                       title={action.title || action.name}
                       date={
@@ -349,7 +340,7 @@ function Main({ theme }) {
                       }
                       adult={action.adult}
                     />
-                  </AnimationOnScroll>
+                  
                 </Link>
               </div>
             </SplideSlide>
@@ -365,12 +356,17 @@ function Main({ theme }) {
             marginLeft: "55px",
           }}
         >
-          Comedy movies 
+          Comedy movies
         </h1>
         <Splide
-          options={{
-            perPage: dimensions.width > 420 ? 7 : 2,
-            rewind: true,
+           options={{
+            type: "loop",
+            drag: "free",
+            focus: "center",
+            perPage:dimensions.width > 420 ? 7 : 2,
+            autoScroll: {
+              speed: 0.5,
+            },
           }}
           aria-label="My Favorite Images"
         >
@@ -383,14 +379,7 @@ function Main({ theme }) {
                 className="container d-flex"
               >
                 <Link state={action} to={`/${action.id}`}>
-                  <AnimationOnScroll
-                    animatePreScroll={true}
-                    offset={1000}
-                    initiallyVisible={true}
-                    animateOnce={true}
-                    duration={1}
-                    animateIn={"animate__fadeInUp"}
-                  >
+                 
                     <MovieCard
                       title={action.title || action.name}
                       date={
@@ -407,7 +396,7 @@ function Main({ theme }) {
                       }
                       adult={action.adult}
                     />
-                  </AnimationOnScroll>
+                  
                 </Link>
               </div>
             </SplideSlide>
@@ -423,12 +412,17 @@ function Main({ theme }) {
             marginLeft: "55px",
           }}
         >
-          Drama movies 
+          Drama movies
         </h1>
         <Splide
           options={{
-            perPage: dimensions.width > 420 ? 7 : 2,
-            rewind: true,
+            type: "loop",
+            drag: "free",
+            focus: "center",
+            perPage:dimensions.width > 420 ? 7 : 2,
+            autoScroll: {
+              speed: 0.5,
+            },
           }}
           aria-label="My Favorite Images"
         >
@@ -441,14 +435,7 @@ function Main({ theme }) {
                 className="container d-flex"
               >
                 <Link state={action} to={`/${action.id}`}>
-                  <AnimationOnScroll
-                    animatePreScroll={true}
-                    offset={1000}
-                    initiallyVisible={true}
-                    animateOnce={true}
-                    duration={1}
-                    animateIn={"animate__fadeInUp"}
-                  >
+                 
                     <MovieCard
                       title={action.title || action.name}
                       date={
@@ -465,7 +452,7 @@ function Main({ theme }) {
                       }
                       adult={action.adult}
                     />
-                  </AnimationOnScroll>
+                  
                 </Link>
               </div>
             </SplideSlide>
@@ -481,12 +468,17 @@ function Main({ theme }) {
             marginLeft: "55px",
           }}
         >
-          Documentary movies 
+          Documentary movies
         </h1>
         <Splide
           options={{
-            perPage: dimensions.width > 420 ? 7 : 2,
-            rewind: true,
+            type: "loop",
+            drag: "free",
+            focus: "center",
+            perPage:dimensions.width > 420 ? 7 : 2,
+            autoScroll: {
+              speed: 0.5,
+            },
           }}
           aria-label="My Favorite Images"
         >
@@ -499,14 +491,7 @@ function Main({ theme }) {
                 className="container d-flex"
               >
                 <Link state={action} to={`/${action.id}`}>
-                  <AnimationOnScroll
-                    animatePreScroll={true}
-                    offset={1000}
-                    initiallyVisible={true}
-                    animateOnce={true}
-                    duration={1}
-                    animateIn={"animate__fadeInUp"}
-                  >
+                 
                     <MovieCard
                       title={action.title || action.name}
                       date={
@@ -523,7 +508,7 @@ function Main({ theme }) {
                       }
                       adult={action.adult}
                     />
-                  </AnimationOnScroll>
+                  
                 </Link>
               </div>
             </SplideSlide>
@@ -538,12 +523,17 @@ function Main({ theme }) {
             marginLeft: "55px",
           }}
         >
-          Animtions 
+          Animtions
         </h1>
         <Splide
           options={{
-            perPage: dimensions.width > 420 ? 7 : 2,
-            rewind: true,
+            type: "loop",
+            drag: "free",
+            focus: "center",
+            perPage:dimensions.width > 420 ? 7 : 2,
+            autoScroll: {
+              speed: 0.5,
+            },
           }}
           aria-label="My Favorite Images"
         >
@@ -556,14 +546,7 @@ function Main({ theme }) {
                 className="container d-flex"
               >
                 <Link state={action} to={`/${action.id}`}>
-                  <AnimationOnScroll
-                    animatePreScroll={true}
-                    offset={1000}
-                    initiallyVisible={true}
-                    animateOnce={true}
-                    duration={1}
-                    animateIn={"animate__fadeInUp"}
-                  >
+                 
                     <MovieCard
                       title={action.title || action.name}
                       date={
@@ -580,7 +563,7 @@ function Main({ theme }) {
                       }
                       adult={action.adult}
                     />
-                  </AnimationOnScroll>
+                  
                 </Link>
               </div>
             </SplideSlide>

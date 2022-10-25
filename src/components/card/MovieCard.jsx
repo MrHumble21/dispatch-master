@@ -63,10 +63,10 @@ const MovieCard = ({
           variant="h5"
           fontWeight={"bold"}
           color={"#2C061F"}
-          fontSize={"0.9rem"}
+          fontSize={"0.8rem"}
           component="div"
         >
-          {title.substring(0, 15) + (title.length > 14 ? "..." : "")}
+          {title.substring(0, 12) + (title.length > 14 ? "..." : "")}
         </Typography>
 
         <p

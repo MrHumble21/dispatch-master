@@ -14,23 +14,8 @@ const BottomNavbar = ({ theme }) => {
           className={`d-inline-flex  w-25 flex-column align-items-center  p-0 fs-5 m-0 ${
             theme ? "text-white" : "text-black"
           }`}
-          // theme ? " bottom_nav_dark " : "bg-light"
           to={"/"}
-          onClick={() => {
-            document.querySelector("#splide10").style.padding = 0;
-            document.querySelector("#splide09").style.padding = 0;
-            document.querySelector("#splide08").style.padding = 0;
-            document.querySelector("#splide07").style.padding = 0;
-            document.querySelector("#splide06").style.padding = 0;
-            document.querySelector("#splide05").style.padding = 0;
-            document.querySelector("#splide04").style.padding = 0;
-            document.querySelector("#splide03").style.padding = 0;
-            document.querySelector("#splide02").style.padding = 0;
-            document.querySelector("#splide01").style.padding = 0;
-            document.querySelector("#splide").style.padding = 0;
-
-            document.querySelector("#splide08").style.padding = 0;
-          }}
+          
         >
           <AiFillHome />
           <p
