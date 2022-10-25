@@ -1,5 +1,4 @@
 import React from "react";
-import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import Rating from "@mui/material/Rating";
 import "react-loading-skeleton/dist/skeleton.css";
@@ -91,7 +90,7 @@ const MovieCard = ({
           precision={0.5}
         />
       
-
+<br />
         {removedDuplicates.map((e, i) => (
           <span key={i} className="badge mx-1 text-bg-light">
             {e.length ? e : "not found"}

@@ -4,6 +4,8 @@ import { Routes, Route } from "react-router-dom";
 import Trending from "./components/trending/Trending";
 import Search from "./components/Search/Search";
 import Description from "./components/Description/Description";
+import logo from './components/appbar/logo.png'
+import logoDark from './components/appbar/logoDark.png'
 import {
   BrowserView,
   MobileView,
@@ -16,6 +18,7 @@ import { BsFillMoonStarsFill, BsFillSunFill } from "react-icons/bs";
 import BottomNavbar from "./components/bottomNavbar/BottomNavbar";
 function App() {
   const [dark, setDark] = useState("true");
+  document.body.style.backgroundColor = dark ? 'black' : 'white';
   return (
     <>
       {dark ? (
@@ -38,9 +41,11 @@ function App() {
         <Appbar theme={dark} />
       </BrowserView>
       <MobileView>
-        <nav className="navbar bg-light">
+        <nav className="navbar">
           <div className="container">
-            <a className="navbar-brand" href="#"></a>
+            <a className="navbar-brand" href="/">
+              <img src={logo} alt="" />
+            </a>
           </div>
         </nav>
       </MobileView>

@@ -137,7 +137,7 @@ function Description({ theme }) {
             <div className="col-sm-12 ">
               <Splide
                 options={{
-                  perPage: isMobile ? 1 : 5,
+                  perPage: isMobile ? 2 : 5,
                   rewind: true,
                 }}
                 aria-label="My Favorite Images"
@@ -170,6 +170,10 @@ function Description({ theme }) {
           </div>
         }
       </div>
+      <br />
+      <br />
+      <br />
+      <br />
     </div>
   );
 }

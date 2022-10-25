@@ -1,8 +1,8 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import logo from "./logo.svg";
-import logodark from "./logoDark.svg";
+import logo from "./logo.png";
+import logodark from "./logoDark.png";
 import { TbEqual } from 'react-icons/tb'
 import { FaTimes } from 'react-icons/fa'
 
