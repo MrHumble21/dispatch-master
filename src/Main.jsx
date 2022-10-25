@@ -62,7 +62,7 @@ function Main({ theme }) {
   movie.toString();
   setTimeout(() => {
     setDone(false);
-  }, 1500);
+  }, 500);
 
   // fetching data from API
 
