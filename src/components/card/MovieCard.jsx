@@ -81,14 +81,14 @@ const MovieCard = ({
             moment(date).format("Do MMM  YYYY")
           )}
         </p>
-
+{/* 
         <Rating
           size="small"
           className="m-0"
           value={vote / 2}
           readOnly
           precision={0.5}
-        />
+        /> */}
       
 <br />
         {removedDuplicates.map((e, i) => (
