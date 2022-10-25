@@ -9,6 +9,8 @@ import "@splidejs/react-splide/css/sea-green";
 import "@splidejs/react-splide/css/core";
 import { isMobile } from "react-device-detect";
 import { Rating } from "@mui/material";
+import moment from "moment/moment";
+
 const apiKey = process.env.REACT_APP_API_KEY
 let api = `https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKey}&language=en-US&page=1`;
 
@@ -65,7 +67,7 @@ const TopRated = () => {
                     >
                       {e.title}
                     </h1>
-                    <h4 className="text-white text-center">{e.release_date}</h4>
+                    <h4 className="text-white text-center">{ moment(e.release_date).format("Do MMM  YYYY")}</h4>
                     <br />
                     <center>
                       <span className="badge p-2 text-bg-light">

@@ -74,7 +74,6 @@ function Popular({ theme }) {
           />
         </div>
       )}
-      <TopRated />
       {loaded.length && (
         <div className="container-fluid   py-3">
           <h1 className="text-center pop fs-4">

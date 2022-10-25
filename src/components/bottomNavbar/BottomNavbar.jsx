@@ -16,6 +16,18 @@ const BottomNavbar = ({ theme }) => {
           }`}
           // theme ? " bottom_nav_dark " : "bg-light"
           to={"/"}
+          onClick={() => {
+            document.querySelector("#splide10").style.padding = 0;
+            document.querySelector("#splide9").style.padding = 0;
+            document.querySelector("#splide8").style.padding = 0;
+            document.querySelector("#splide7").style.padding = 0;
+            document.querySelector("#splide6").style.padding = 0;
+            document.querySelector("#splide5").style.padding = 0;
+            document.querySelector("#splide4").style.padding = 0;
+            document.querySelector("#splide3").style.padding = 0;
+            document.querySelector("#splide2").style.padding = 0;
+            document.querySelector("#splide1").style.padding = 0;
+          }}
         >
           <AiFillHome />
           <p

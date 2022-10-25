@@ -25,7 +25,7 @@ import "@splidejs/react-splide/css/skyblue";
 import "@splidejs/react-splide/css/sea-green";
 import "@splidejs/react-splide/css/core";
 import { IoIosArrowDown } from "react-icons/io";
-
+import TopRated from './components/TopRated/TopRated'
 function Main({ theme }) {
   const [content, setContent] = useState([]);
   const loaded = [...content];
@@ -181,7 +181,7 @@ function Main({ theme }) {
           />
         </div>
       )}
-      {/*<TopRated/>*/}
+      <TopRated />
       {/* Action movies start */}
       <div className="container-fluid my-4">
         <h1
