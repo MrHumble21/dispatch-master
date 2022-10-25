@@ -30,7 +30,7 @@ function Popular({ theme }) {
   movie.toString();
   setTimeout(() => {
     setDone(false);
-  }, 500);
+  }, 300);
   const url = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=${page}`;
   const fetchPopularMovies = async () => {
     await fetch(url)
