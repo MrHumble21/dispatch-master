@@ -2,7 +2,6 @@ import { Rating } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import Lottie from "lottie-react";
 import { isMobile } from 'react-device-detect'
-import loadingAnimation from '../trending/Loader.json'
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import moment from "moment/moment";
@@ -66,10 +65,7 @@ function Description({ theme }) {
       backgroundColor: theme ? 'black' : 'white', minHeight: '100vh'
     }}>
       <div className="container  p-3">
-        {
-          done && <div className={`${theme ? "full-container-dark" : "full-container"}`}>
-            <Lottie className={isMobile ? 'w-75' : "w-25"} animationData={loadingAnimation} />
-          </div>}
+    
         <div className="row py-5">
           <div className="col-md-6 col-12  p-4 d-flex justify-content-center">
             <img

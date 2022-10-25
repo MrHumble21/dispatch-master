@@ -4,7 +4,6 @@ import Rating from "@mui/material/Rating";
 import "react-loading-skeleton/dist/skeleton.css";
 import FlagIcon from "@mui/icons-material/Flag";
 import { genres } from "../../genres";
-import circle from "./circle.svg";
 
 import moment from "moment/moment";
 
@@ -98,7 +97,6 @@ const MovieCard = ({
           </span>
         ))}
 
-        <img src={circle} alt="" />
       </div>
     </div>
   );

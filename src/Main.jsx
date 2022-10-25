@@ -4,7 +4,6 @@ import "./App.css";
 // import { isMobile } from "react-device-detect";
 import Lottie from "lottie-react";
 import { isMobile, BrowserView, MobileView } from "react-device-detect";
-import loadingAnimation from "./components/trending/Loader.json";
 import {
   BsFillArrowUpCircleFill,
   BsFillArrowRightSquareFill,
@@ -24,13 +23,11 @@ import "@splidejs/react-splide/css";
 import "@splidejs/react-splide/css/skyblue";
 import "@splidejs/react-splide/css/sea-green";
 import "@splidejs/react-splide/css/core";
-import { IoIosArrowDown } from "react-icons/io";
 import TopRated from "./components/TopRated/TopRated";
 function Main({ theme }) {
   const [content, setContent] = useState([]);
   const loaded = [...content];
   const [tv, movie] = useState("all");
-  const [page, setPage] = useState(1);
   const [done, setDone] = useState(false);
   //   urls
   const apiKey = process.env.REACT_APP_API_KEY;
@@ -173,14 +170,7 @@ function Main({ theme }) {
       className="rel"
     >
       <br />
-      {done && (
-        <div className={`${theme ? "full-container-dark" : "full-container"}`}>
-          <Lottie
-            className={isMobile ? "w-50" : "w-25"}
-            animationData={loadingAnimation}
-          />
-        </div>
-      )}
+     
       <TopRated />
       {/* Action movies start */}
       <div className="container-fluid my-4">

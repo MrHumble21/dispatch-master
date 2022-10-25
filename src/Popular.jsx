@@ -3,7 +3,6 @@ import "./App.css";
 // import { isMobile } from "react-device-detect";
 import Lottie from "lottie-react";
 import { isMobile } from "react-device-detect";
-import loadingAnimation from "./components/trending/Loader.json";
 import {
   BsFillArrowUpCircleFill,
   BsFillArrowRightSquareFill,
@@ -63,14 +62,7 @@ function Popular({ theme }) {
       className="rel"
     >
       <br />
-      {done && (
-        <div className={`${theme ? "full-container-dark" : "full-container"}`}>
-          <Lottie
-            className={isMobile ? "w-75" : "w-25"}
-            animationData={loadingAnimation}
-          />
-        </div>
-      )}
+      
       {loaded.length && (
         <div className="container-fluid   py-3">
           <h1 className="text-center pop fs-4">
