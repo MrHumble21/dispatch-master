@@ -6,12 +6,15 @@ const BottomNavbar = ({ theme }) => {
   return (
     <nav
       className={`navbar fixed-bottom p-0  ${
-        theme ? " bottom_nav_dark " : "bg-light"
+        theme ? " bottom_nav_dark " : " bottom_nav_dark"
       }`}
     >
       <div className="d-flex justify-content-between w-100 py-2">
         <Link
-          className="d-inline-flex text-white w-25 flex-column align-items-center  p-0 fs-5 m-0 "
+          className={`d-inline-flex  w-25 flex-column align-items-center  p-0 fs-5 m-0 ${
+            theme ? "text-white" : "text-black"
+          }`}
+          // theme ? " bottom_nav_dark " : "bg-light"
           to={"/"}
         >
           <AiFillHome />
@@ -26,8 +29,10 @@ const BottomNavbar = ({ theme }) => {
           </p>
         </Link>
         <Link
-          className="d-inline-flex text-white w-25 flex-column align-items-center p-0 fs-5 m-0 "
-          to={'/popular'}
+          className={`d-inline-flex  w-25 flex-column align-items-center p-0 fs-5 m-0 ${
+            theme ? "text-white" : "text-black"
+          }`}
+          to={"/popular"}
         >
           <FaFireAlt className="m-0 p-0" />
           <p
@@ -41,9 +46,10 @@ const BottomNavbar = ({ theme }) => {
           </p>
         </Link>
         <Link
-          className="d-inline-flex text-white w-25 flex-column align-items-center p-0 fs-5 m-0 "
+          className={`d-inline-flex  w-25 flex-column align-items-center p-0 fs-5 m-0 ${
+            theme ? "text-white" : "text-black"
+          }`}
           to="/search"
-
         >
           <FaSearch className="m-0 p-0" />
           <p
@@ -57,9 +63,10 @@ const BottomNavbar = ({ theme }) => {
           </p>
         </Link>
         <Link
-          className="d-inline-flex text-white w-25 flex-column align-items-center p-0 fs-5 m-0 "
+          className={`d-inline-flex  w-25 flex-column align-items-center p-0 fs-5 m-0 ${
+            theme ? "text-white" : "text-black"
+          }`}
           to="/trending"
-
         >
           <BiTrendingUp className="m-0 p-0" />
           <p
