@@ -181,6 +181,7 @@ body {
   position: fixed;
   z-index: 15000;
   left: 45%;
+  transform: translate(-50%);
   top: 10px; cursor:pointer;
 
 }

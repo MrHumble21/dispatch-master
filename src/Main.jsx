@@ -127,11 +127,15 @@ function Main({ theme }) {
             >
                 Top Popular Movies and Tv Series 🔥
             </h1>
-            <div className="row">
+            <div className="row ">
                 {/* checking and rendering data from state */}
                 {loaded.length < 0 ? (<h1>no data</h1>) : (loaded.map((e, i) => (
-                    <div key={i} className="col-6 col-md-2 p-2 ">
-                        <Link state={e} to={`/${e.id}`}>
+                    <div key={i} className="col-6 d-flex  col-md-2 p-2 ">
+                        <Link
+                       style={{
+                        height:"100%"
+                       }} 
+                        state={e} to={`/${e.id}`}>
                             <AnimationOnScroll
                                 animatePreScroll={true}
                                 offset={1000}
