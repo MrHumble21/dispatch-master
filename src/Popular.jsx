@@ -2,8 +2,8 @@ import { useEffect, useState, useRef } from "react";
 import "./App.css";
 // import { isMobile } from "react-device-detect";
 import Lottie from "lottie-react";
-import { isMobile } from 'react-device-detect'
-import loadingAnimation from './components/trending/Loader.json'
+import { isMobile } from "react-device-detect";
+import loadingAnimation from "./components/trending/Loader.json";
 import {
   BsFillArrowUpCircleFill,
   BsFillArrowRightSquareFill,
@@ -19,10 +19,8 @@ import { img_500 } from "./components/configs/config";
 import { Link } from "react-router-dom";
 import { genres } from "./genres";
 import TopRated from "./components/TopRated/TopRated";
-const apiKey = process.env.REACT_APP_API_KEY
-function Popular({
-  theme
-}) {
+const apiKey = process.env.REACT_APP_API_KEY;
+function Popular({ theme }) {
   const [content, setContent] = useState([]);
   const loaded = [...content];
   const [tv, movie] = useState("all");
@@ -32,7 +30,7 @@ function Popular({
   movie.toString();
   setTimeout(() => {
     setDone(false);
-  }, 1500)
+  }, 1500);
   const url = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=${page}`;
   const fetchPopularMovies = async () => {
     await fetch(url)
@@ -57,23 +55,25 @@ function Popular({
     });
   };
   const topbtn = useRef();
-  document.body.style.overflow = done ? 'hidden' : 'scroll'
+  document.body.style.overflow = done ? "hidden" : "scroll";
   /////////////////  UI will start from here below 👇  //////////////////////
   return (
     <div
       style={{
-        overflowY: done ? 'hidden' : 'scroll',
-        backgroundColor: theme ? "black" : "white"
-
+        overflowY: done ? "hidden" : "scroll",
+        backgroundColor: theme ? "black" : "white",
       }}
-      className="rel">
+      className="rel"
+    >
       <br />
-      {
-        done && <div
-
-          className={`${theme ? "full-container-dark" : "full-container"}`}>
-          <Lottie className={isMobile ? 'w-75' : "w-25"} animationData={loadingAnimation} />
-        </div>}
+      {done && (
+        <div className={`${theme ? "full-container-dark" : "full-container"}`}>
+          <Lottie
+            className={isMobile ? "w-75" : "w-25"}
+            animationData={loadingAnimation}
+          />
+        </div>
+      )}
       <TopRated />
       {loaded.length && (
         <div className="container-fluid   py-3">
@@ -119,8 +119,9 @@ function Popular({
           </div>
           <center className="">
             <button
-              className={`btn btn-transparent mx-2 ${page === 1 ? "disabled" : ""
-                } `}
+              className={`btn btn-transparent mx-2 ${
+                page === 1 ? "disabled" : ""
+              } `}
               onClick={() => {
                 setPage(page - 1);
                 window.scrollTo({
@@ -157,7 +158,10 @@ function Popular({
         ref={topbtn}
         className={"toTop  animated_animate"}
       >
-        <BsFillArrowUpCircleFill className="arrowtop text-info" />
+        <BsFillArrowUpCircleFill
+          className="arrowtop "
+          style={{ color: "#FF1E00" }}
+        />
       </div>
       <br />
       <br />
