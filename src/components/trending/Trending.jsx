@@ -23,7 +23,7 @@ function Trending({ theme }) {
 
   setTimeout(() => {
     setDone(false);
-  }, 1500)
+  }, 500)
   const url = `https://api.themoviedb.org/3/trending/${tv}/week?api_key=${apiKey}
   `;
   const fetchPopularMovies = async () => {
