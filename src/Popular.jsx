@@ -25,12 +25,9 @@ function Popular({ theme }) {
   const loaded = [...content];
   const [tv, movie] = useState("all");
   const [page, setPage] = useState(1);
-  const [done, setDone] = useState(true);
+  const [done, setDone] = useState(false);
 
-  movie.toString();
-  setTimeout(() => {
-    setDone(false);
-  }, 300);
+
   const url = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=${page}`;
   const fetchPopularMovies = async () => {
     await fetch(url)

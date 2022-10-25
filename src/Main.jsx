@@ -31,7 +31,7 @@ function Main({ theme }) {
   const loaded = [...content];
   const [tv, movie] = useState("all");
   const [page, setPage] = useState(1);
-  const [done, setDone] = useState(true);
+  const [done, setDone] = useState(false);
   //   urls
   const apiKey = process.env.REACT_APP_API_KEY;
 

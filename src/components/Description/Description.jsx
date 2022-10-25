@@ -24,7 +24,7 @@ function Description({ theme }) {
   const [trailersId, setTrailers] = useState();
   const [movie, setmovie] = useState();
   const [recommended, setRecommended] = useState([]);
-  const [done, setDone] = useState(true);
+  const [done, setDone] = useState(false);
  const apiKey = process.env.REACT_APP_API_KEY
   setTimeout(() => {
     setDone(false);

@@ -12,7 +12,7 @@ import TopRated from "../TopRated/TopRated";
 const apiKey = process.env.REACT_APP_API_KEY;
 function Trending({ theme }) {
   const [content, setContent] = useState([]);
-  const [done, setDone] = useState(true);
+  const [done, setDone] = useState(false);
   const [tv, movie] = useState("all");
   const handleMovie = () => {
     movie("movie");
