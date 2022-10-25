@@ -63,7 +63,7 @@ const MovieCard = ({
           fontSize={"1.01rem"}
           component="div"
         >
-          {title.substring(0, 17) + (title.length > 17 ? "..." : "")}
+          {title.substring(0, 15) + (title.length > 17 ? "..." : "")}
         </Typography>
 
         <p

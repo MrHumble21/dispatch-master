@@ -199,3 +199,8 @@ a {
     padding: 35px 0;
   }
 }
+
+
+.splide__arrow > *{
+  color: #ff1e00 !important;
+}
