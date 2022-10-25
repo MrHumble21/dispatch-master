@@ -241,7 +241,7 @@ function Main({ theme }) {
       </div>
       {/* Action movies end */}
       {/* Adventure start */}
-      <div className="container-fluid my-4">
+      <div className="container-fluid  p-0 my-4">
         <h1
           style={{
             color: !theme ? "black" : "white",
@@ -254,6 +254,7 @@ function Main({ theme }) {
           options={{
             perPage: dimensions.width > 420 ? 7 : 2,
             rewind: true,
+            padding:"0"
           }}
           aria-label="My Favorite Images"
         >

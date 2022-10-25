@@ -98,7 +98,7 @@ body {
 }
 .toTop {
   position: fixed;
-  bottom: 40px;
+  bottom: 80px;
   right: 20px;
 }
 
@@ -200,7 +200,14 @@ a {
   }
 }
 
-
-.splide__arrow > *{
+.splide__arrow > * {
   color: #ff1e00 !important;
+}
+
+.bottom_nav_dark {
+  /* From https://css.glass */
+  background: rgba(255, 255, 255, 0.29);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5.5px);
+  -webkit-backdrop-filter: blur(5.5px);
 }

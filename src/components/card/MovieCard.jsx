@@ -38,7 +38,7 @@ const MovieCard = ({
     <div
       style={{
         backgroundColor: theme ? "black" : "white",
-        // height: "100% !important",
+        minHeight: "100% !important",
       }}
       className={`custom_card ${
         theme && "bg-dark text-white"
@@ -47,23 +47,27 @@ const MovieCard = ({
       <div className="container   py-2 m-0 ">
         {
           <img
-            className="w-100 rounded card_image"
+            className="w-100 m-0 p-0 rounded card_image"
             component="img"
             src={movieImage}
             alt={alt}
           />
         }
       </div>
-      <CardContent className="px-2 py-1">
+      <div
+      style={{
+        minHeight:"100px"
+      }}
+      className="px-2  py-1">
         <Typography
           className={`m-0 ${theme && "text-white"}`}
           variant="h5"
           fontWeight={"bold"}
           color={"#2C061F"}
-          fontSize={"1.01rem"}
+          fontSize={"0.9rem"}
           component="div"
         >
-          {title.substring(0, 15) + (title.length > 17 ? "..." : "")}
+          {title.substring(0, 15) + (title.length > 14 ? "..." : "")}
         </Typography>
 
         <p
@@ -86,15 +90,7 @@ const MovieCard = ({
           readOnly
           precision={0.5}
         />
-        <div className={"my-auto"}>
-          <div
-            className={`${
-              vote / 2 > 2.5 ? "bg-success" : "bg-danger"
-            } text-white  rounded d-inline-block p-2`}
-          >
-            {(vote / 2).toFixed(1)}
-          </div>
-        </div>
+      
 
         {removedDuplicates.map((e, i) => (
           <span key={i} className="badge mx-1 text-bg-light">
@@ -103,7 +99,7 @@ const MovieCard = ({
         ))}
 
         <img src={circle} alt="" />
-      </CardContent>
+      </div>
     </div>
   );
 };

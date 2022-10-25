@@ -8,24 +8,26 @@ import Description from "./components/Description/Description";
 import Appbar from "./components/appbar/Appbar";
 import Main from "./Main";
 import { BsFillMoonStarsFill, BsFillSunFill } from "react-icons/bs";
+import BottomNavbar from "./components/bottomNavbar/BottomNavbar";
 function App() {
-  const [dark, setDark] = useState('true');
+  const [dark, setDark] = useState("true");
   return (
     <>
-      {
-        dark ? <BsFillSunFill
+      {dark ? (
+        <BsFillSunFill
           onClick={() => {
-            setDark(!dark)
+            setDark(!dark);
           }}
           className="night bg fs-1 text-warning "
-        /> :
-          <BsFillMoonStarsFill
-            onClick={() => {
-              setDark(!dark)
-            }}
-            className="night  fs-1 text-warning " />
-
-      }
+        />
+      ) : (
+        <BsFillMoonStarsFill
+          onClick={() => {
+            setDark(!dark);
+          }}
+          className="night  fs-1 text-warning "
+        />
+      )}
 
       <Appbar theme={dark} />
       <Routes>
@@ -35,7 +37,7 @@ function App() {
         <Route path=":id" element={<Description theme={dark} />} />
         <Route path="/search" element={<Search theme={dark} />} />
       </Routes>
-
+      <BottomNavbar  theme={dark}/>
     </>
   );
 }
