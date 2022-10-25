@@ -18,16 +18,18 @@ const BottomNavbar = ({ theme }) => {
           to={"/"}
           onClick={() => {
             document.querySelector("#splide10").style.padding = 0;
-            document.querySelector("#splide9").style.padding = 0;
-            document.querySelector("#splide8").style.padding = 0;
-            document.querySelector("#splide7").style.padding = 0;
-            document.querySelector("#splide6").style.padding = 0;
-            document.querySelector("#splide5").style.padding = 0;
-            document.querySelector("#splide4").style.padding = 0;
-            document.querySelector("#splide3").style.padding = 0;
-            document.querySelector("#splide2").style.padding = 0;
-            document.querySelector("#splide1").style.padding = 0;
+            document.querySelector("#splide09").style.padding = 0;
+            document.querySelector("#splide08").style.padding = 0;
+            document.querySelector("#splide07").style.padding = 0;
+            document.querySelector("#splide06").style.padding = 0;
+            document.querySelector("#splide05").style.padding = 0;
+            document.querySelector("#splide04").style.padding = 0;
+            document.querySelector("#splide03").style.padding = 0;
+            document.querySelector("#splide02").style.padding = 0;
+            document.querySelector("#splide01").style.padding = 0;
             document.querySelector("#splide").style.padding = 0;
+
+            document.querySelector("#splide08").style.padding = 0;
           }}
         >
           <AiFillHome />
