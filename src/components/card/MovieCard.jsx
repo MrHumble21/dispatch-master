@@ -32,18 +32,17 @@ const MovieCard = ({
       }
     }
   }
-  console.log({ card: theme });
   const removedDuplicates = [...new Set(arr)];
 
   return (
     <div
       style={{
         backgroundColor: theme ? "black" : "white",
-        height:"100% !important"
+        // height: "100% !important",
       }}
       className={`custom_card ${
         theme && "bg-dark text-white"
-      } m-0 m-height-card ${margin}`}
+      } m-0 p-0 m-height-card ${margin}`}
     >
       <div className="container   py-2 m-0 ">
         {
@@ -64,13 +63,11 @@ const MovieCard = ({
           fontSize={"1.01rem"}
           component="div"
         >
-          {title}
+          {title.substring(0, 20) + (title.length > 20 ? "..." : "")}
         </Typography>
 
         <p
-          style={{ fontSize: "15px", 
-          fontWeight:'bold',
-          color: "#17223B" }}
+          style={{ fontSize: "15px", fontWeight: "bold", color: "#17223B" }}
           className={`m-0 p-0 ${theme && "text-white"}`}
         >
           {country ? (

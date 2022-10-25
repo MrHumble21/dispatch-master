@@ -8,7 +8,6 @@ import { FaTimes } from 'react-icons/fa'
 
 function Appbar({ theme }) {
   const [down, up] = useState(false);
-  console.log(theme)
   return (
     <nav
       style={{

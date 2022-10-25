@@ -19,7 +19,7 @@ import { img_500 } from "./components/configs/config";
 import { Link } from "react-router-dom";
 import { genres } from "./genres";
 import TopRated from "./components/TopRated/TopRated";
-const apiKey = "5a6077716d3404c52264bcf17f97a3d3";
+const apiKey = process.env.REACT_APP_API_KEY
 function Popular({
   theme
 }) {

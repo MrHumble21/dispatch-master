@@ -9,7 +9,7 @@ import loadingAnimation from './Loader.json'
 import "animate.css/animate.min.css";
 import { AnimationOnScroll } from "react-animation-on-scroll";
 import TopRated from "../TopRated/TopRated";
-const apiKey = "5a6077716d3404c52264bcf17f97a3d3";
+const apiKey = process.env.REACT_APP_API_KEY;
 function Trending({ theme }) {
   const [content, setContent] = useState([]);
   const [done, setDone] = useState(true);

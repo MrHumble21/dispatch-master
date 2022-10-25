@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/iframe-has-title */
 import { Rating } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import Lottie from "lottie-react";
@@ -26,14 +25,14 @@ function Description({ theme }) {
   const [movie, setmovie] = useState();
   const [recommended, setRecommended] = useState([]);
   const [done, setDone] = useState(true);
-
+ const apiKey = process.env.REACT_APP_API_KEY
   setTimeout(() => {
     setDone(false);
   }, 1000)
-  let url = `https://api.themoviedb.org/3/movie/${data.id}/videos?api_key=5a6077716d3404c52264bcf17f97a3d3&language=en-US`;
+  let url = `https://api.themoviedb.org/3/movie/${data.id}/videos?api_key=${apiKey}&language=en-US`;
   const genres = async () => {
     await fetch(
-      `https://api.themoviedb.org/3/movie/${data.id}?api_key=5a6077716d3404c52264bcf17f97a3d3&language=en-US`
+      `https://api.themoviedb.org/3/movie/${data.id}?api_key=${apiKey}&language=en-US`
     )
       .then((response) => response.json())
       .then((result) => setmovie(result));
@@ -46,7 +45,7 @@ function Description({ theme }) {
       });
 
     fetch(
-      `https://api.themoviedb.org/3/movie/${data.id}/recommendations?api_key=5a6077716d3404c52264bcf17f97a3d3&language=en-US&page=1`
+      `https://api.themoviedb.org/3/movie/${data.id}/recommendations?api_key=${apiKey}&language=en-US&page=1`
     )
       .then((response) => response.json())
       .then((rec) => setRecommended(rec.results));

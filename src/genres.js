@@ -1,4 +1,4 @@
-export const genres = [... new Set([
+export const genres = [...new Set([
  
   {
     id: 16,

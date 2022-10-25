@@ -1,11 +1,14 @@
+/* eslint-disable no-unused-vars */
 import { useEffect, useState, useRef } from "react";
 import "./App.css";
 // import { isMobile } from "react-device-detect";
 import Lottie from "lottie-react";
-import { isMobile } from 'react-device-detect'
-import loadingAnimation from './components/trending/Loader.json'
+import { isMobile, BrowserView, MobileView } from "react-device-detect";
+import loadingAnimation from "./components/trending/Loader.json";
 import {
-    BsFillArrowUpCircleFill, BsFillArrowRightSquareFill, BsFillArrowLeftSquareFill,
+  BsFillArrowUpCircleFill,
+  BsFillArrowRightSquareFill,
+  BsFillArrowLeftSquareFill,
 } from "react-icons/bs";
 // animate css
 import "animate.css/animate.min.css";
@@ -14,221 +17,647 @@ import { AnimationOnScroll } from "react-animation-on-scroll";
 import MovieCard from "./components/card/MovieCard";
 import { img_500 } from "./components/configs/config";
 import { Link } from "react-router-dom";
-import { genres } from "./genres";
-import AccordionCustom from "./components/accordion/AccordionCustom";
+// genres carousel
+import { Splide, SplideSlide } from "@splidejs/react-splide";
+// genres carousel css
+import "@splidejs/react-splide/css";
+import "@splidejs/react-splide/css/skyblue";
+import "@splidejs/react-splide/css/sea-green";
+import "@splidejs/react-splide/css/core";
+import { IoIosArrowDown } from "react-icons/io";
 
-const apiKey = "5a6077716d3404c52264bcf17f97a3d3";
 function Main({ theme }) {
-    const [content, setContent] = useState([]);
-    const loaded = [...content];
-    const [tv, movie] = useState("all");
-    const [page, setPage] = useState(1);
-    const [done, setDone] = useState(true);
-    const [categoriesId, setCategoriesId] = useState(12)
-    const [categoryName, setCategoryName] = useState("All")
+  const [content, setContent] = useState([]);
+  const loaded = [...content];
+  const [tv, movie] = useState("all");
+  const [page, setPage] = useState(1);
+  const [done, setDone] = useState(true);
+  //   urls
+  const apiKey = process.env.REACT_APP_API_KEY;
 
+  const adventureUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_genres=12`;
+  const actionUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_genres=28`;
 
+  const dramaUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_genres=18`;
 
-    movie.toString();
-    setTimeout(() => {
-        setDone(false);
-    }, 1500)
-    const categories = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_genres=${categoriesId}`
-    // const url = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=${page}`;
-    const fetchPopularMovies = async () => {
-        await fetch(categories)
-            .then((response) => response.json())
-            .then((data) => {
-                setContent(data.results);
-                setPage(data.page);
-            });
-    };
+  const comedyUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_genres=35`;
 
-    // fetching data from API
+  const horrorUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_genres=27`;
+  const documentaryUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_genres=99`;
+  const animation = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_genres=16`;
+  const nowPlaying = `https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}&language=en-US&page=1`;
+  // genres
+  const [actions, setActions] = useState([]);
+  const [drama, setDrama] = useState([]);
+  const [horror, setHorror] = useState([]);
+  const [comedy, setComedy] = useState([]);
+  const [adventures, setAdventures] = useState([]);
+  const [documentary, setDocumentary] = useState([]);
+  const [animations, setAnimation] = useState([]);
+  const [dimensions, setDimensions] = useState({
+    height: window.innerHeight,
+    width: window.innerWidth,
+  });
 
-    useEffect(() => {
-        fetchPopularMovies();
-    }, [tv, page, categoriesId]);
+  movie.toString();
+  setTimeout(() => {
+    setDone(false);
+  }, 1500);
 
-    // scroll to top  function :)
-    const handleTop = () => {
-        window.scrollTo({
-            top: 0, behavior: "smooth",
-        });
-    };
+  // fetching data from API
 
-    const topbtn = useRef();
-    document.body.style.overflow = done ? 'hidden' : 'scroll'
-    /////////////////  UI will start from here below 👇  //////////////////////
-    return (<div
-        style={{
-            overflowY: done ? 'hidden' : 'scroll',
-            backgroundColor: theme ? "black" : "white"
-        }}
-        className="rel">
-        <br />
-        {done && <div className={`${theme ? "full-container-dark" :"full-container"}`}>
-            <Lottie className={isMobile ? 'w-50' : "w-25"} animationData={loadingAnimation} />
-        </div>}
-        {/*<h1 className={'text-center'}>Category: {categoryName}</h1>*/}
-        <AccordionCustom>
+  const fetchAction = async () => {
+    await fetch(actionUrl)
+      .then((res) => res.json())
+      .then((data) => {
+        setActions(data.results);
+      });
+  };
 
-            <div className="accordion-item">
-                <h2 className={`accordion-header my-1 ${theme ? 'bg-black':"bg-white"}`} id="flush-headingOne">
-                    <center>
-                        <button
-                            style={{
-                                backgroundColor: "#FF1E00"
-                            }}
-                            className={` btn px-5 py-3 collapsed ${isMobile ? 'fs-4' : 'fs-1'} text-white text-center`} type="button"
-                            data-bs-toggle="collapse"
-                            data-bs-target="#flush-collapseOne" aria-expanded="false"
-                            aria-controls="flush-collapseOne">
-                            See All Categories
-                        </button>
-                    </center>
-                </h2>
-                <div id="flush-collapseOne" className="accordion-collapse ${isMobile ? 'fs-4' : 'fs-1'} collapse" aria-labelledby="flush-headingOne"
-                    data-bs-parent="#accordionFlushExample">
-                    <div className={`accordion-body  ${isMobile ? 'fs-4' : 'fs-1'} ${theme ?  'bg-dark':'bg-light'}`}>
-                        {
-                            genres.map((e, i) => (
-                                <span
-                                    key={i}
-                                    style={{
-                                        backgroundColor: "#F5EFE6",
-                                        fontWeight: "normal"
-                                    }}
-                                    id={e.id}
-                                    onClick={(event) => {
-                                        setCategoryName(e.name)
-                                        setCategoriesId(e.id)
-                                        window.scrollTo({
-                                            top: 0, behavior: "smooth",
-                                        });
+  const fetchAdventure = async () => {
+    await fetch(adventureUrl)
+      .then((res) => res.json())
+      .then((data) => {
+        setAdventures(data.results);
+      });
+  };
 
-                                        document.querySelector("#flush-collapseOne").classList.toggle("show")
-                                    }}
-                                    role={'button'}
-                                    className={`badge chover text-black d-inline-block ${isMobile ? " m-1" : "fs-4 m-2"}`}>{e.name}</span>
+  const fetchDrama = async () => {
+    await fetch(dramaUrl)
+      .then((res) => res.json())
+      .then((data) => {
+        setDrama(data.results);
+      });
+  };
 
-                            ))
-                        }
-                    </div>
-                </div>
-            </div>
+  const fetchhorror = async () => {
+    await fetch(horrorUrl)
+      .then((res) => res.json())
+      .then((data) => {
+        setHorror(data.results);
+      });
+  };
 
+  const fetchDocumentary = async () => {
+    await fetch(documentaryUrl)
+      .then((res) => res.json())
+      .then((data) => {
+        setDocumentary(data.results);
+      });
+  };
 
-        </AccordionCustom>
-        {/*<TopRated/>*/}
-        {loaded.length && (<div className="container-fluid   py-3">
-            <h1
-                className={` text-center pop fs-4 ${theme && "text-white"}`}
-            >
-                Top Popular Movies and Tv Series 🔥
-            </h1>
-            <div className="row ">
-                {/* checking and rendering data from state */}
-                {loaded.length < 0 ? (<h1>no data</h1>) : (loaded.map((e, i) => (
-                    <div key={i} className="col-6 d-flex  col-md-2 p-2 ">
-                        <Link
-                       style={{
-                        height:"100%"
-                       }} 
-                        state={e} to={`/${e.id}`}>
-                            <AnimationOnScroll
-                                animatePreScroll={true}
-                                offset={1000}
-                                initiallyVisible={true}
-                                animateOnce={true}
-                                duration={1}
-                                animateIn={"animate__fadeInUp"}
-                            >
-                                <MovieCard
-                                    title={e.title || e.name}
-                                    date={e.release_date || "Release Date is not available"}
-                                    type={e.media_type}
-                                    alt={"a"}
-                                    theme={theme}
-                                    vote={e.vote_average}
-                                    movieImage={e.poster_path ? img_500 + "/" + e.poster_path : "https://st4.depositphotos.com/14953852/24787/v/600/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg"}
-                                    adult={e.adult}
-                                />
-                            </AnimationOnScroll>
-                        </Link>
-                    </div>)))}
-            </div>
-            <center className="">
-                <button
-                    className={`btn btn-transparent mx-2 ${page === 1 ? "disabled" : ""} `}
-                    onClick={() => {
-                        setPage(page - 1);
-                        window.scrollTo({
-                            top: 400, behavior: "smooth",
-                        });
-                    }}
-                    type="button"
-                >
-                    <BsFillArrowLeftSquareFill
-                        style={{ color: "#FF1E00" }}
-                        className="fs-2" />
-                </button>
-                Page:{page}
-                <button
-                    className="btn btn-transparent"
-                    onClick={() => {
-                        setPage(page + 1);
-                        window.scrollTo({
-                            top: 400, behavior: "smooth",
-                        });
-                    }}
-                    type="button"
-                >
-                    <BsFillArrowRightSquareFill
-                        style={{ color: "#FF1E00" }}
-                        className="fs-2" />
-                </button>
-            </center>
-        </div>)}
+  const fetchComedy = async () => {
+    await fetch(comedyUrl)
+      .then((res) => res.json())
+      .then((data) => {
+        setComedy(data.results);
+      });
+  };
 
-        <div
-            onClick={handleTop}
-            role={"button"}
-            id="top"
-            ref={topbtn}
-            className={"toTop  animated_animate"}
-        >
-            <BsFillArrowUpCircleFill
-                style={{ color: "#FF1E00" }}
-                className="arrowtop " />
+  const fetchAnimation = async () => {
+    await fetch(animation)
+      .then((res) => res.json())
+      .then((data) => {
+        setAnimation(data.results);
+      });
+  };
+
+  const fetchNowPlaying = async () => {
+    await fetch(nowPlaying)
+      .then((res) => res.json())
+      .then((data) => {
+        setContent(data.results);
+      });
+  };
+  useEffect(() => {
+    function handleResize() {
+      setDimensions({
+        height: window.innerHeight,
+        width: window.innerWidth,
+      });
+    }
+    window.addEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
+    fetchAction();
+    fetchAdventure();
+    fetchDrama();
+    fetchhorror();
+    fetchDocumentary();
+    fetchComedy();
+    fetchAnimation();
+    fetchNowPlaying();
+  }, []);
+
+  //   actions && console.log(actions);
+
+  // scroll to top  function :)
+  const handleTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
+  const topbtn = useRef();
+  document.body.style.overflow = done ? "hidden" : "scroll";
+  /////////////////  UI will start from here below 👇  //////////////////////
+  return (
+    <div
+      style={{
+        overflowY: done ? "hidden" : "scroll",
+        backgroundColor: theme ? "black" : "white",
+        minHeight: "100vh",
+      }}
+      className="rel"
+    >
+      <br />
+      {done && (
+        <div className={`${theme ? "full-container-dark" : "full-container"}`}>
+          <Lottie
+            className={isMobile ? "w-50" : "w-25"}
+            animationData={loadingAnimation}
+          />
         </div>
-        <br />
-        <br />
-        <br />
-    </div>);
+      )}
+      {/*<TopRated/>*/}
+      {/* Action movies start */}
+      <div className="container-fluid my-4">
+        <h1
+          style={{
+            color: !theme ? "black" : "white",
+            marginLeft: "55px",
+          }}
+        >
+          We recommend you action movies <IoIosArrowDown />
+        </h1>
+        <Splide
+          options={{
+            perPage: dimensions.width > 420 ? 7 : 2,
+            rewind: true,
+          }}
+          aria-label="My Favorite Images"
+        >
+          {actions.map((action, index) => (
+            <SplideSlide>
+              <div
+                style={{
+                  alignItems: "stretch",
+                }}
+                className="container d-flex"
+              >
+                <Link state={action} to={`/${action.id}`}>
+                  <AnimationOnScroll
+                    animatePreScroll={true}
+                    offset={1000}
+                    initiallyVisible={true}
+                    animateOnce={true}
+                    duration={1}
+                    animateIn={"animate__fadeInUp"}
+                  >
+                    <MovieCard
+                      title={action.title || action.name}
+                      date={
+                        action.release_date || "Release Date is not available"
+                      }
+                      type={action.media_type}
+                      alt={"a"}
+                      theme={theme}
+                      vote={action.vote_average}
+                      movieImage={
+                        action.poster_path
+                          ? img_500 + "/" + action.poster_path
+                          : "https://st4.depositphotos.com/14953852/24787/v/600/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg"
+                      }
+                      adult={action.adult}
+                    />
+                  </AnimationOnScroll>
+                </Link>
+              </div>
+            </SplideSlide>
+          ))}
+        </Splide>
+      </div>
+      {/* Action movies end */}
+      {/* Adventure start */}
+      <div className="container-fluid my-4">
+        <h1
+          style={{
+            color: !theme ? "black" : "white",
+            marginLeft: "55px",
+          }}
+        >
+          We recommend you Adventure movies <IoIosArrowDown />
+        </h1>
+        <Splide
+          options={{
+            perPage: dimensions.width > 420 ? 7 : 2,
+            rewind: true,
+          }}
+          aria-label="My Favorite Images"
+        >
+          {adventures.map((action, index) => (
+            <SplideSlide>
+              <div
+                style={{
+                  alignItems: "stretch",
+                }}
+                className="container d-flex"
+              >
+                <Link state={action} to={`/${action.id}`}>
+                  <AnimationOnScroll
+                    animatePreScroll={true}
+                    offset={1000}
+                    initiallyVisible={true}
+                    animateOnce={true}
+                    duration={1}
+                    animateIn={"animate__fadeInUp"}
+                  >
+                    <MovieCard
+                      title={action.title || action.name}
+                      date={
+                        action.release_date || "Release Date is not available"
+                      }
+                      type={action.media_type}
+                      alt={"a"}
+                      theme={theme}
+                      vote={action.vote_average}
+                      movieImage={
+                        action.poster_path
+                          ? img_500 + "/" + action.poster_path
+                          : "https://st4.depositphotos.com/14953852/24787/v/600/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg"
+                      }
+                      adult={action.adult}
+                    />
+                  </AnimationOnScroll>
+                </Link>
+              </div>
+            </SplideSlide>
+          ))}
+        </Splide>
+      </div>
+      {/* Adventure end */}
+      {/* horror start */}
+      <div className="container-fluid my-4">
+        <h1
+          style={{
+            color: !theme ? "black" : "white",
+            marginLeft: "55px",
+          }}
+        >
+          We recommend you Horror movies <IoIosArrowDown />
+        </h1>
+        <Splide
+          options={{
+            perPage: dimensions.width > 420 ? 7 : 2,
+            rewind: true,
+          }}
+          aria-label="My Favorite Images"
+        >
+          {horror.map((action, index) => (
+            <SplideSlide>
+              <div
+                style={{
+                  alignItems: "stretch",
+                }}
+                className="container d-flex"
+              >
+                <Link state={action} to={`/${action.id}`}>
+                  <AnimationOnScroll
+                    animatePreScroll={true}
+                    offset={1000}
+                    initiallyVisible={true}
+                    animateOnce={true}
+                    duration={1}
+                    animateIn={"animate__fadeInUp"}
+                  >
+                    <MovieCard
+                      title={action.title || action.name}
+                      date={
+                        action.release_date || "Release Date is not available"
+                      }
+                      type={action.media_type}
+                      alt={"a"}
+                      theme={theme}
+                      vote={action.vote_average}
+                      movieImage={
+                        action.poster_path
+                          ? img_500 + "/" + action.poster_path
+                          : "https://st4.depositphotos.com/14953852/24787/v/600/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg"
+                      }
+                      adult={action.adult}
+                    />
+                  </AnimationOnScroll>
+                </Link>
+              </div>
+            </SplideSlide>
+          ))}
+        </Splide>
+      </div>
+      {/* horror end */}
+      {/* comedy start */}
+      <div className="container-fluid my-4">
+        <h1
+          style={{
+            color: !theme ? "black" : "white",
+            marginLeft: "55px",
+          }}
+        >
+          We recommend you Comedy movies <IoIosArrowDown />
+        </h1>
+        <Splide
+          options={{
+            perPage: dimensions.width > 420 ? 7 : 2,
+            rewind: true,
+          }}
+          aria-label="My Favorite Images"
+        >
+          {comedy.map((action, index) => (
+            <SplideSlide>
+              <div
+                style={{
+                  alignItems: "stretch",
+                }}
+                className="container d-flex"
+              >
+                <Link state={action} to={`/${action.id}`}>
+                  <AnimationOnScroll
+                    animatePreScroll={true}
+                    offset={1000}
+                    initiallyVisible={true}
+                    animateOnce={true}
+                    duration={1}
+                    animateIn={"animate__fadeInUp"}
+                  >
+                    <MovieCard
+                      title={action.title || action.name}
+                      date={
+                        action.release_date || "Release Date is not available"
+                      }
+                      type={action.media_type}
+                      alt={"a"}
+                      theme={theme}
+                      vote={action.vote_average}
+                      movieImage={
+                        action.poster_path
+                          ? img_500 + "/" + action.poster_path
+                          : "https://st4.depositphotos.com/14953852/24787/v/600/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg"
+                      }
+                      adult={action.adult}
+                    />
+                  </AnimationOnScroll>
+                </Link>
+              </div>
+            </SplideSlide>
+          ))}
+        </Splide>
+      </div>
+      {/* comedy end */}
+      {/* drama start */}
+      <div className="container-fluid my-4">
+        <h1
+          style={{
+            color: !theme ? "black" : "white",
+            marginLeft: "55px",
+          }}
+        >
+          We recommend you drama movies <IoIosArrowDown />
+        </h1>
+        <Splide
+          options={{
+            perPage: dimensions.width > 420 ? 7 : 2,
+            rewind: true,
+          }}
+          aria-label="My Favorite Images"
+        >
+          {drama.map((action, index) => (
+            <SplideSlide>
+              <div
+                style={{
+                  alignItems: "stretch",
+                }}
+                className="container d-flex"
+              >
+                <Link state={action} to={`/${action.id}`}>
+                  <AnimationOnScroll
+                    animatePreScroll={true}
+                    offset={1000}
+                    initiallyVisible={true}
+                    animateOnce={true}
+                    duration={1}
+                    animateIn={"animate__fadeInUp"}
+                  >
+                    <MovieCard
+                      title={action.title || action.name}
+                      date={
+                        action.release_date || "Release Date is not available"
+                      }
+                      type={action.media_type}
+                      alt={"a"}
+                      theme={theme}
+                      vote={action.vote_average}
+                      movieImage={
+                        action.poster_path
+                          ? img_500 + "/" + action.poster_path
+                          : "https://st4.depositphotos.com/14953852/24787/v/600/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg"
+                      }
+                      adult={action.adult}
+                    />
+                  </AnimationOnScroll>
+                </Link>
+              </div>
+            </SplideSlide>
+          ))}
+        </Splide>
+      </div>
+      {/* drama end */}
+      {/* documentary start */}
+      <div className="container-fluid my-4">
+        <h1
+          style={{
+            color: !theme ? "black" : "white",
+            marginLeft: "55px",
+          }}
+        >
+          We recommend you Documentary movies <IoIosArrowDown />
+        </h1>
+        <Splide
+          options={{
+            perPage: dimensions.width > 420 ? 7 : 2,
+            rewind: true,
+          }}
+          aria-label="My Favorite Images"
+        >
+          {documentary.map((action, index) => (
+            <SplideSlide>
+              <div
+                style={{
+                  alignItems: "stretch",
+                }}
+                className="container d-flex"
+              >
+                <Link state={action} to={`/${action.id}`}>
+                  <AnimationOnScroll
+                    animatePreScroll={true}
+                    offset={1000}
+                    initiallyVisible={true}
+                    animateOnce={true}
+                    duration={1}
+                    animateIn={"animate__fadeInUp"}
+                  >
+                    <MovieCard
+                      title={action.title || action.name}
+                      date={
+                        action.release_date || "Release Date is not available"
+                      }
+                      type={action.media_type}
+                      alt={"a"}
+                      theme={theme}
+                      vote={action.vote_average}
+                      movieImage={
+                        action.poster_path
+                          ? img_500 + "/" + action.poster_path
+                          : "https://st4.depositphotos.com/14953852/24787/v/600/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg"
+                      }
+                      adult={action.adult}
+                    />
+                  </AnimationOnScroll>
+                </Link>
+              </div>
+            </SplideSlide>
+          ))}
+        </Splide>
+      </div>
+      {/* documentary end */}
+      <div className="container-fluid my-4">
+        <h1
+          style={{
+            color: !theme ? "black" : "white",
+            marginLeft: "55px",
+          }}
+        >
+          We recommend you Animtions <IoIosArrowDown />
+        </h1>
+        <Splide
+          options={{
+            perPage: dimensions.width > 420 ? 7 : 2,
+            rewind: true,
+          }}
+          aria-label="My Favorite Images"
+        >
+          {animations.map((action, index) => (
+            <SplideSlide>
+              <div
+                style={{
+                  alignItems: "stretch",
+                }}
+                className="container d-flex"
+              >
+                <Link state={action} to={`/${action.id}`}>
+                  <AnimationOnScroll
+                    animatePreScroll={true}
+                    offset={1000}
+                    initiallyVisible={true}
+                    animateOnce={true}
+                    duration={1}
+                    animateIn={"animate__fadeInUp"}
+                  >
+                    <MovieCard
+                      title={action.title || action.name}
+                      date={
+                        action.release_date || "Release Date is not available"
+                      }
+                      type={action.media_type}
+                      alt={"a"}
+                      theme={theme}
+                      vote={action.vote_average}
+                      movieImage={
+                        action.poster_path
+                          ? img_500 + "/" + action.poster_path
+                          : "https://st4.depositphotos.com/14953852/24787/v/600/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg"
+                      }
+                      adult={action.adult}
+                    />
+                  </AnimationOnScroll>
+                </Link>
+              </div>
+            </SplideSlide>
+          ))}
+        </Splide>
+      </div>
+
+      {loaded.length && (
+        <div className="container-fluid   py-3">
+          <h1 className={` text-center pop fs-1 ${theme && "text-white"}`}>
+            🔥 New movies in the Theaters | New Releases 🔥
+          </h1>
+          <br />
+          <div className="row ">
+            {/* checking and rendering data from state */}
+            {loaded.length < 0 ? (
+              <h1>no data</h1>
+            ) : (
+              loaded.map((e, i) => (
+                <div key={i} className="col-6 d-flex  col-md-2 p-2 ">
+                  <Link
+                    style={{
+                      height: "100%",
+                    }}
+                    state={e}
+                    to={`/${e.id}`}
+                  >
+                    <AnimationOnScroll
+                      animatePreScroll={true}
+                      offset={1000}
+                      initiallyVisible={true}
+                      animateOnce={true}
+                      duration={1}
+                      animateIn={"animate__fadeInUp"}
+                    >
+                      <MovieCard
+                        title={e.title || e.name}
+                        date={e.release_date || "Release Date is not available"}
+                        type={e.media_type}
+                        alt={"a"}
+                        theme={theme}
+                        vote={e.vote_average}
+                        movieImage={
+                          e.poster_path
+                            ? img_500 + "/" + e.poster_path
+                            : "https://st4.depositphotos.com/14953852/24787/v/600/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg"
+                        }
+                        adult={e.adult}
+                      />
+                    </AnimationOnScroll>
+                  </Link>
+                </div>
+              ))
+            )}
+          </div>
+        </div>
+      )}
+
+      <div
+        onClick={handleTop}
+        role={"button"}
+        id="top"
+        ref={topbtn}
+        className={"toTop  animated_animate"}
+      >
+        <BsFillArrowUpCircleFill
+          style={{ color: "#FF1E00" }}
+          className="arrowtop "
+        />
+      </div>
+      <br />
+      <br />
+      <br />
+    </div>
+  );
 }
 
 export default Main;
 
 // total_pages
 // //
-//
-// <Splide
-//     options={{
-//         perPage: isMobile ? 3 : 10,
-//         rewind: true,
-//         arrows: false,
-//     }}
-//     aria-label="My Favorite Images"
-// >
-//     {genres.map((e, i) => (
-//         <SplideSlide className="m-0 p-0" key={i}>
-//       <span
-//           role={"button"}
-//           className="badge d-sm-block p-2 mx-auto fs-6 rounded-pill text-bg-danger"
-//       >
-//         {e.name}
-//       </span>
-//         </SplideSlide>
-//     ))}
-// </Splide>;

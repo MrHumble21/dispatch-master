@@ -16,14 +16,12 @@ function App() {
         dark ? <BsFillSunFill
           onClick={() => {
             setDark(!dark)
-            console.log(dark)
           }}
           className="night bg fs-1 text-warning "
         /> :
           <BsFillMoonStarsFill
             onClick={() => {
               setDark(!dark)
-              console.log(dark)
             }}
             className="night  fs-1 text-warning " />
 

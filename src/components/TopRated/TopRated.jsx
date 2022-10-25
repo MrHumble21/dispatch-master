@@ -9,7 +9,8 @@ import "@splidejs/react-splide/css/sea-green";
 import "@splidejs/react-splide/css/core";
 import { isMobile } from "react-device-detect";
 import { Rating } from "@mui/material";
-let api = `https://api.themoviedb.org/3/movie/top_rated?api_key=5a6077716d3404c52264bcf17f97a3d3&language=en-US&page=1`;
+const apiKey = process.env.REACT_APP_API_KEY
+let api = `https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKey}&language=en-US&page=1`;
 
 const TopRated = () => {
   const [top_rated, set_top_rated] = useState([]);
