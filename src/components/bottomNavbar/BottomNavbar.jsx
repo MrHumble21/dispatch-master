@@ -27,6 +27,7 @@ const BottomNavbar = ({ theme }) => {
             document.querySelector("#splide3").style.padding = 0;
             document.querySelector("#splide2").style.padding = 0;
             document.querySelector("#splide1").style.padding = 0;
+            document.querySelector("#splide").style.padding = 0;
           }}
         >
           <AiFillHome />
