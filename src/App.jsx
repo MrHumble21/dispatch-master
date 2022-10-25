@@ -37,6 +37,13 @@ function App() {
       <BrowserView>
         <Appbar theme={dark} />
       </BrowserView>
+      <MobileView>
+        <nav className="navbar bg-light">
+          <div className="container">
+            <a className="navbar-brand" href="#"></a>
+          </div>
+        </nav>
+      </MobileView>
       <Routes>
         <Route path="/" element={<Main theme={dark} />}></Route>
         <Route path="/popular" element={<Popular theme={dark} />}></Route>
