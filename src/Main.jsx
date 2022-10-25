@@ -190,7 +190,7 @@ function Main({ theme }) {
             marginLeft: "55px",
           }}
         >
-          We recommend you action movies <IoIosArrowDown />
+          Action movies 
         </h1>
         <Splide
           options={{
@@ -248,13 +248,13 @@ function Main({ theme }) {
             marginLeft: "55px",
           }}
         >
-          We recommend you Adventure movies <IoIosArrowDown />
+          Adventure movies 
         </h1>
         <Splide
           options={{
             perPage: dimensions.width > 420 ? 7 : 2,
             rewind: true,
-            padding:"0"
+            padding: "0",
           }}
           aria-label="My Favorite Images"
         >
@@ -307,7 +307,7 @@ function Main({ theme }) {
             marginLeft: "55px",
           }}
         >
-          We recommend you Horror movies <IoIosArrowDown />
+          Horror movies 
         </h1>
         <Splide
           options={{
@@ -365,7 +365,7 @@ function Main({ theme }) {
             marginLeft: "55px",
           }}
         >
-          We recommend you Comedy movies <IoIosArrowDown />
+          Comedy movies 
         </h1>
         <Splide
           options={{
@@ -423,7 +423,7 @@ function Main({ theme }) {
             marginLeft: "55px",
           }}
         >
-          We recommend you drama movies <IoIosArrowDown />
+          Drama movies 
         </h1>
         <Splide
           options={{
@@ -481,7 +481,7 @@ function Main({ theme }) {
             marginLeft: "55px",
           }}
         >
-          We recommend you Documentary movies <IoIosArrowDown />
+          Documentary movies 
         </h1>
         <Splide
           options={{
@@ -538,7 +538,7 @@ function Main({ theme }) {
             marginLeft: "55px",
           }}
         >
-          We recommend you Animtions <IoIosArrowDown />
+          Animtions 
         </h1>
         <Splide
           options={{
