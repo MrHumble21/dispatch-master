@@ -1,9 +1,9 @@
 /* eslint-disable no-unused-vars */
 import { useEffect, useState, useRef } from "react";
 import "./App.css";
-// import { isMobile } from "react-device-detect";
-import Lottie from "lottie-react";
-import { isMobile, BrowserView, MobileView } from "react-device-detect";
+import 'lazysizes';
+import 'lazysizes/plugins/parent-fit/ls.parent-fit';
+
 import {
   BsFillArrowUpCircleFill,
   BsFillArrowRightSquareFill,
@@ -207,7 +207,8 @@ function Main({ theme }) {
                     duration={1}
                     animateIn={"animate__fadeInUp"}
                   >
-                    <MovieCard
+                    <MovieCard 
+                    lazy={'lazyload'}
                       title={action.title || action.name}
                       date={
                         action.release_date || "Release Date is not available"
@@ -268,7 +269,8 @@ function Main({ theme }) {
                     duration={1}
                     animateIn={"animate__fadeInUp"}
                   >
-                    <MovieCard
+                    <MovieCard 
+                    lazy={'lazyload'}
                       title={action.title || action.name}
                       date={
                         action.release_date || "Release Date is not available"
@@ -327,7 +329,8 @@ function Main({ theme }) {
                     duration={1}
                     animateIn={"animate__fadeInUp"}
                   >
-                    <MovieCard
+                    <MovieCard 
+                    lazy={'lazyload'}
                       title={action.title || action.name}
                       date={
                         action.release_date || "Release Date is not available"
@@ -386,7 +389,8 @@ function Main({ theme }) {
                     duration={1}
                     animateIn={"animate__fadeInUp"}
                   >
-                    <MovieCard
+                    <MovieCard 
+                    lazy={'lazyload'}
                       title={action.title || action.name}
                       date={
                         action.release_date || "Release Date is not available"
@@ -445,7 +449,8 @@ function Main({ theme }) {
                     duration={1}
                     animateIn={"animate__fadeInUp"}
                   >
-                    <MovieCard
+                    <MovieCard 
+                    lazy={'lazyload'}
                       title={action.title || action.name}
                       date={
                         action.release_date || "Release Date is not available"
@@ -504,7 +509,8 @@ function Main({ theme }) {
                     duration={1}
                     animateIn={"animate__fadeInUp"}
                   >
-                    <MovieCard
+                    <MovieCard 
+                    lazy={'lazyload'}
                       title={action.title || action.name}
                       date={
                         action.release_date || "Release Date is not available"
@@ -562,7 +568,8 @@ function Main({ theme }) {
                     duration={1}
                     animateIn={"animate__fadeInUp"}
                   >
-                    <MovieCard
+                    <MovieCard 
+                    lazy={'lazyload'}
                       title={action.title || action.name}
                       date={
                         action.release_date || "Release Date is not available"
@@ -614,7 +621,8 @@ function Main({ theme }) {
                       duration={1}
                       animateIn={"animate__fadeInUp"}
                     >
-                      <MovieCard
+                      <MovieCard 
+                      lazy={'lazyload'}
                         title={e.title || e.name}
                         date={e.release_date || "Release Date is not available"}
                         type={e.media_type}

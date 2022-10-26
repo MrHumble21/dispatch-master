@@ -17,6 +17,7 @@ const MovieCard = ({
   country,
   margin,
   genre_ids = [],
+  lazy
 }) => {
   const arr = [];
 
@@ -46,8 +47,9 @@ const MovieCard = ({
         {
           <img
           loading="lazy"
-            className="w-100 m-0 p-0 rounded card_image"
+            className="w-100 m-0 p-0 rounded card_image lazyload"
             component="img"
+            // class={lazy}
             src={movieImage}
             alt={alt}
           />
