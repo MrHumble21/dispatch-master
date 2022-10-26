@@ -55,7 +55,7 @@ function App() {
         <Route path=":id" element={<Description theme={dark} />} />
         <Route path="/search" element={<Search theme={dark} />} />
       </Routes>
-      <Footer />
+      <Footer  theme={dark}/>
       {isMobile && <BottomNavbar theme={dark} />}
     </>
   );
