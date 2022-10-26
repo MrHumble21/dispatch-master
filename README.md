@@ -22,7 +22,7 @@ Platform provide informations about all type of movies, including title, release
 ```
 
 ```bash
-  yarn install 
+  yarn start 
 ```
 
 ## Run
