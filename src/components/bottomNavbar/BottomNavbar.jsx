@@ -11,7 +11,7 @@ const BottomNavbar = ({ theme }) => {
     >
       <div className="d-flex justify-content-between w-100 py-2">
         <Link
-          className={`d-inline-flex  w-25 flex-column align-items-center  p-0 fs-5 m-0 ${
+          className={`d-inline-flex  choverr w-25 flex-column align-items-center  p-0 fs-5 m-0 ${
             theme ? "text-white" : "text-black"
           }`}
           to={"/"}
@@ -29,7 +29,7 @@ const BottomNavbar = ({ theme }) => {
           </p>
         </Link>
         <Link
-          className={`d-inline-flex  w-25 flex-column align-items-center p-0 fs-5 m-0 ${
+          className={`d-inline-flex choverr w-25 flex-column align-items-center p-0 fs-5 m-0 ${
             theme ? "text-white" : "text-black"
           }`}
           to={"/popular"}
@@ -46,7 +46,7 @@ const BottomNavbar = ({ theme }) => {
           </p>
         </Link>
         <Link
-          className={`d-inline-flex  w-25 flex-column align-items-center p-0 fs-5 m-0 ${
+          className={`d-inline-flex choverr w-25 flex-column align-items-center p-0 fs-5 m-0 ${
             theme ? "text-white" : "text-black"
           }`}
           to="/search"
@@ -63,7 +63,7 @@ const BottomNavbar = ({ theme }) => {
           </p>
         </Link>
         <Link
-          className={`d-inline-flex  w-25 flex-column align-items-center p-0 fs-5 m-0 ${
+          className={`d-inline-flex  choverr w-25 flex-column align-items-center p-0 fs-5 m-0 ${
             theme ? "text-white" : "text-black"
           }`}
           to="/trending"

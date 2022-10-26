@@ -14,6 +14,7 @@ import Appbar from "./components/appbar/Appbar";
 import Main from "./Main";
 import { BsFillMoonStarsFill, BsFillSunFill } from "react-icons/bs";
 import BottomNavbar from "./components/bottomNavbar/BottomNavbar";
+import Footer from "./components/footer/Footer";
 function App() {
   const [dark, setDark] = useState("true");
   document.body.style.backgroundColor = dark ? 'black' : 'white';
@@ -54,6 +55,7 @@ function App() {
         <Route path=":id" element={<Description theme={dark} />} />
         <Route path="/search" element={<Search theme={dark} />} />
       </Routes>
+      <Footer />
       {isMobile && <BottomNavbar theme={dark} />}
     </>
   );
