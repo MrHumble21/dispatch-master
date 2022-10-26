@@ -1,4 +1,4 @@
-import { BsFacebook, BsGithub, BsPhone, BsTelegram } from "react-icons/bs";
+import {  BsGithub, BsPhone, BsTelegram } from "react-icons/bs";
 import { MdOutlineAlternateEmail } from "react-icons/md";
 import { AiFillLinkedin } from "react-icons/ai";
 import { Link } from "react-router-dom";
