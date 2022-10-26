@@ -191,7 +191,7 @@ function Main({ theme }) {
           aria-label="My Favorite Images"
         >
           {actions.map((action, index) => (
-            <SplideSlide>
+            <SplideSlide key={index}> 
               <div
                 style={{
                   alignItems: "stretch",
@@ -253,7 +253,7 @@ function Main({ theme }) {
           aria-label="My Favorite Images"
         >
           {adventures.map((action, index) => (
-            <SplideSlide>
+            <SplideSlide key={index}>
               <div
                 style={{
                   alignItems: "stretch",
@@ -313,7 +313,7 @@ function Main({ theme }) {
           aria-label="My Favorite Images"
         >
           {horror.map((action, index) => (
-            <SplideSlide>
+            <SplideSlide key={index}>
               <div
                 style={{
                   alignItems: "stretch",
@@ -373,7 +373,7 @@ function Main({ theme }) {
           aria-label="My Favorite Images"
         >
           {comedy.map((action, index) => (
-            <SplideSlide>
+            <SplideSlide key={index}>
               <div
                 style={{
                   alignItems: "stretch",
@@ -433,7 +433,7 @@ function Main({ theme }) {
           aria-label="My Favorite Images"
         >
           {drama.map((action, index) => (
-            <SplideSlide>
+            <SplideSlide key={index}>
               <div
                 style={{
                   alignItems: "stretch",
@@ -493,7 +493,7 @@ function Main({ theme }) {
           aria-label="My Favorite Images"
         >
           {documentary.map((action, index) => (
-            <SplideSlide>
+            <SplideSlide key={index}>
               <div
                 style={{
                   alignItems: "stretch",
@@ -552,7 +552,7 @@ function Main({ theme }) {
           aria-label="My Favorite Images"
         >
           {animations.map((action, index) => (
-            <SplideSlide>
+            <SplideSlide key={index}>
               <div
                 style={{
                   alignItems: "stretch",

@@ -49,7 +49,6 @@ const MovieCard = ({
           loading="lazy"
             className="w-100 m-0 p-0 rounded card_image lazyload"
             component="img"
-            // class={lazy}
             src={movieImage}
             alt={alt}
           />
