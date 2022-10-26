@@ -109,7 +109,7 @@ const Footer = ({ theme }) => {
             backgroundColor: `rgba(0, 0, 0, 0.2)`,
           }}
         >
-          © {moment().format("ll")} Copyright:
+          © {new Date().getFullYear()} Copyright:
           <a className={`${theme ? "bg-black text-white" : "text-black bg-white"}`} href="https://www.abdulboriy.me/">
             <p>Abdulboriy.me</p>
           </a>
